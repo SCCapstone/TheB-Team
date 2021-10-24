@@ -75,4 +75,4 @@ Cody Haigler - coodhaigler@gmail.com
 
 Evan Kitten - evankitten8@gmail.com
 
-Bradon Torres - brandont123@icloud.com
+Brandon Torres - brandont123@icloud.com, bttorres@email.sc.edu
