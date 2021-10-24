@@ -71,7 +71,7 @@ Explain how to run the automated tests.
 
 Brandon Carter -  bcarter9893@gmail.com, carterba@email.sc.edu
 
-Cody Haigler - coodhaigler@gmail.com
+Cody Haigler - coodhaigler@gmail.com, chaigler@email.sc.edu
 
 Evan Kitten - evankitten8@gmail.com
 
