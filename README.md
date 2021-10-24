@@ -69,7 +69,7 @@ Explain how to run the automated tests.
 
 # Authors
 
-Brandon Carter -  bcarter9893@gmail.com 
+Brandon Carter -  bcarter9893@gmail.com, carterba@email.sc.edu
 
 Cody Haigler - coodhaigler@gmail.com
 
