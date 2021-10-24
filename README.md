@@ -1,6 +1,8 @@
 # TheB-Team
 # Geofee
 
+# Work In Progress
+
 Project Description:
 https://github.com/SCCapstone/TheB-Team/wiki/Project-Description
 
@@ -68,9 +70,6 @@ Explain how to run the automated tests.
 # Authors
 
 Brandon Carter -  bcarter9893@gmail.com 
-
 Cody Haigler - coodhaigler@gmail.com
-
 Evan Kitten - evankitten8@gmail.com
-
-Brandon Torres - brandont123@icloud.com
+Bradon Torres - brandont123@icloud.com
