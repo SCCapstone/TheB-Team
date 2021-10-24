@@ -68,6 +68,9 @@ Explain how to run the automated tests.
 # Authors
 
 Brandon Carter -  bcarter9893@gmail.com 
+
 Cody Haigler - coodhaigler@gmail.com
+
 Evan Kitten - evankitten8@gmail.com
-Bradon Torres - brandont123@icloud.com
+
+Brandon Torres - brandont123@icloud.com
