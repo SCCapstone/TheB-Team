@@ -89,3 +89,5 @@ Cody Haigler - coodhaigler@gmail.com, chaigler@email.sc.edu
 Evan Kitten - evankitten8@gmail.com
 
 Brandon Torres - brandont123@icloud.com, bttorres@email.sc.edu
+
+Liam Olson - laoder99@gmail.com, liamao@email.sc.edu
