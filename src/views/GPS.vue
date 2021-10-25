@@ -2,7 +2,8 @@
   <div class="routedetails">
     <hr>
     <h1>GPS</h1>
-    <img src="src/assets/gps.png"/>
+    <hr>
+    <h3>GPS here</h3>
   </div>
 </template>
 
