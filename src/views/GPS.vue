@@ -3,15 +3,19 @@
     <hr>
     <h1>GPS</h1>
     <hr>
-    <h3>GPS here</h3>
+      <img src="@/assets/Route_Example.png" />
   </div>
 </template>
 
 <script>
-export default {
-  name: 'GPS',
-  props: {
-    msg: String
+  export default {
+    name: 'GPS',
+    props: {
+      msg: String
+    }
+  
   }
-}
 </script>
+
+<style lang="scss">
+</style>
