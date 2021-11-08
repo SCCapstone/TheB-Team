@@ -14,7 +14,7 @@
   
   <div>
     <div>
-         <form id="form" class="form-inline" v-on:submit.prevent="addNote">
+         <form id="form" class="form-inline" @submit.prevent="addNote">
           <div class="form-group">
             <!-- Creates space to add note title -->
             <label for="noteTitle">Title:</label>
