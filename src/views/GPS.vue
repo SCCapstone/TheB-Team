@@ -1,32 +1,32 @@
 <template>
-  <div id="mapContainer" class="basemap"></div>
+  <div id="map" />
 </template>
 
 <script>
 import mapboxgl from "mapbox-gl";
-
+import "mapbox-gl/dist/mapbox-gl.css";
+import { onMounted } from "vue";
 export default {
-  name: "BaseMap",
-  data() {
-    return {
-      accessToken: 'pk.eyJ1IjoiYmNhcnRlcjk4IiwiYSI6ImNrdmxmM2lyaDM1YW8ybnFpd25pMXAweWkifQ.d9dq5Fh0ykTmsJmCmEKrAA',
-    };
-  },
-  mounted() {
-    mapboxgl.accessToken = this.accessToken;
-
-    new mapboxgl.Map({
-      container: "mapContainer",
-      style: "mapbox://styles/mapbox/streets-v11",
-      center: [103.811279, 1.345399],
-      zoom: 12,
+  setup() {
+    onMounted(() => {
+      mapboxgl.accessToken =
+        "pk.eyJ1IjoiYmNhcnRlcjk4IiwiYSI6ImNrdmxmM2lyaDM1YW8ybnFpd25pMXAweWkifQ.d9dq5Fh0ykTmsJmCmEKrAA";
+      const map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/light-v9",
+      });
+      map.on('load', () => {
+      // TODO: Here we want to load a layer
+      // TODO: Here we want to load/setup the popup
+      });
     });
+    return {};
   },
 };
 </script>
-<style lang="scss" scoped>
-.basemap {
-  width: 100%;
-  height: 100%;
+
+<style>
+#map {
+  height: 100vh;
 }
 </style>
