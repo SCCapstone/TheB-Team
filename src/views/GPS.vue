@@ -5,6 +5,8 @@
 <script>
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
+import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
 import { onMounted } from "vue";
 export default {
   setup() {
@@ -13,12 +15,12 @@ export default {
         "pk.eyJ1IjoiYmNhcnRlcjk4IiwiYSI6ImNrdmxmM2lyaDM1YW8ybnFpd25pMXAweWkifQ.d9dq5Fh0ykTmsJmCmEKrAA";
       const map = new mapboxgl.Map({
         container: "map",
-        style: "mapbox://styles/mapbox/light-v9",
+        style: "mapbox://styles/mapbox/streets-v11",
+        center: [-96, 37.],
+        zoom:3
       });
-      map.on('load', () => {
-      // TODO: Here we want to load a layer
-      // TODO: Here we want to load/setup the popup
-      });
+
+      
     });
     return {};
   },
