@@ -11,6 +11,8 @@
     <router-link to="/rulesregulations">Rules/Regulations</router-link>
   </div>
   <router-view/>
+  
+  
 </template>
 
 <style>
@@ -37,7 +39,12 @@
 </style>
 
 <script>
+
 export default {
-  name: 'app',
-}
+  name: 'app'
+  
+    }
+    
+
+
 </script>
