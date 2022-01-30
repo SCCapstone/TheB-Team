@@ -1,0 +1,39 @@
+{
+  "name": "ui_test",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@mapbox/mapbox-gl-directions": "^4.1.0",
+    "@vue/composition-api": "^1.4.0",
+    "axios": "^0.24.0",
+    "core-js": "^3.6.5",
+    "firebase": "^8.10.0",
+    "map-promisified": "^0.4.0",
+    "mapbox-gl": "^2.6.0",
+    "mapbox-gl-directions": "^3.0.3",
+    "mapbox-gl-geocoder": "^2.0.1",
+    "openrouteservice-js": "^0.1.29",
+    "v-mapbox": "^1.9.0",
+    "vue": "^3.0.0",
+    "vue-mapbox-ts": "^0.6.4",
+    "vue-router": "^4.0.0-0",
+    "vue2mapbox-gl": "^0.13.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^7.0.0",
+    "node-sass": "^6.0.1",
+    "sass-loader": "^10.2.0"
+  }
+}
