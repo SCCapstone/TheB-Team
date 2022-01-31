@@ -1,4 +1,4 @@
-const sortVariables = require('./utils')
+const sortVariables = require('../../src/utils')
 
 test('properly sorts variables alphabetically', () => {
     //creating object to represent users with name attribute
