@@ -71,6 +71,8 @@ For the behavioral tests, go to 'https://www.selenium.dev/selenium-ide/' and dow
 // Explain how to run the automated tests.
   
 For the behavioral tests, open the Selenium IDE extension from Chrome and click 'Open an existing project.' Select the behavioral test you would like to run and, finally, click the 'run all tests' button.
+  
+For the unit tests, first run npm install to make sure everything us up to date, then run npm test to run all the tests.
 
 # Authors
 
