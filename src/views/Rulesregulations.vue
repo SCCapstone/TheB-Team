@@ -37,7 +37,8 @@
 </template>
 
 <script>
-import { createVariable } from '@/firebase';
+import { createVariable, getVariables } from '@/firebase';
+import { sortVariables } from '@/utils';
 import { reactive } from 'vue';
 export default {
   name: 'Rulesregulations',
@@ -52,7 +53,10 @@ export default {
     });
 
     const onSubmit = async () => {
-      await createVariable({ ...form });
+      const items = getVariables();
+      const sorted = sortVariables(items);
+      console.log(sorted);
+      createVariable({ ...form });
       form.name = '';
       form.states = '';
       form.type = '';

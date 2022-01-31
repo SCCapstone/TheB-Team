@@ -17,11 +17,16 @@ const app = firebase.initializeApp(firebaseConfig);
 const db = app.firestore();
 const variablesCollection = db.collection('Variables');
 
-export const createVariable = variable => {
+export const getVariables = async () => {
+    const variables = await variablesCollection.get();
+    variables.docs.map(doc => doc.data()).then(data => { return data });
+}
+
+export const createVariable = (variable) => {
     return variablesCollection.add(variable);
 }
 
-export const getVariable = async id => {
+export const getVariable = async (id) => {
     const variable = await variablesCollection.doc(id).get();
     return variable.exists ? variable.data() : null;
 }
@@ -30,6 +35,6 @@ export const updateVariable = (id, variable) => {
     return variablesCollection.doc(id).update(variable);
 }
 
-export const deleteVariable = id => {
+export const deleteVariable = (id) => {
     return variablesCollection.doc(id).delete();
 }
