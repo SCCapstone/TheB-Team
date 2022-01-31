@@ -56,17 +56,21 @@ npm run serve
 // In 492 you will write automated tests. When you do you will need to add a 
 // section that explains how to run them.
 
-// The unit tests are in `/test/unit`.
+The unit tests are in `/test/unit`.
 
-// The behavioral tests are in `/test/casper/`.
+The behavioral tests are in `/test/selenium/`.
 
 ## Testing Technology
 
 // In some cases you need to install test runners, etc. Explain how.
 
+For the behavioral tests, go to 'https://www.selenium.dev/selenium-ide/' and download the 'Selenium IDE' extension to Chrome. 
+
 ## Running Tests
 
 // Explain how to run the automated tests.
+  
+For the behavioral tests, open the Selenium IDE extension from Chrome and click 'Open an existing project.' Select the behavioral test you would like to run and, finally, click the 'run all tests' button.
 
 # Authors
 
