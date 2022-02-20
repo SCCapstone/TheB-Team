@@ -19,7 +19,7 @@
     "mapbox-gl-geocoder": "^2.0.1",
     "openrouteservice-js": "^0.1.29",
     "v-mapbox": "^1.9.0",
-    "vue": "^3.0.0",
+    "vue": "^3.2.23",
     "vue-mapbox-ts": "^0.6.4",
     "vue-router": "^4.0.0-0",
     "vue2mapbox-gl": "^0.13.0"
