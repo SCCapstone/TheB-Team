@@ -11,47 +11,47 @@ import Rulesregulations from '../views/Rulesregulations.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/TheB-Team/',
     name: 'Home',
     component: Home
   },
   {
-    path: '/loginsignup',
+    path: '/TheB-Team/loginsignup',
     name: 'Loginsignup',
     component: Loginsignup
   },
   {
-    path: '/trucklist',
+    path: '/TheB-Team/trucklist',
     name: 'Trucklist',
     component: Trucklist
   },
   {
-    path: '/routelist',
+    path: '/TheB-Team/routelist',
     name: 'Routelist',
     component: Routelist
   },
   {
-    path: '/truckdetails',
+    path: '/TheB-Team/truckdetails',
     name: 'Truckdetails',
     component: Truckdetails
   },
   {
-    path: '/routedetails',
+    path: '/TheB-Team/routedetails',
     name: 'Routedetails',
     component: Routedetails
   },
   {
-    path: '/gps',
+    path: '/TheB-Team/gps',
     name: 'GPS',
     component: GPS
   },
   {
-    path: '/calculator',
+    path: '/TheB-Team/calculator',
     name: 'Calculator',
     component: Calculator
   },
   {
-    path: '/rulesregulations',
+    path: '/TheB-Team/rulesregulations',
     name: 'Rulesregulations',
     component: Rulesregulations
   }

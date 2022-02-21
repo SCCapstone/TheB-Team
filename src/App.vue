@@ -1,14 +1,14 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/loginsignup">Log in/Sign up</router-link> |
-    <router-link to="/trucklist">Truck List</router-link> |
-    <router-link to="/routelist">Route List</router-link> |
-    <router-link to="/truckdetails">Truck Details</router-link> |
-    <router-link to="/routedetails">Route Details</router-link> |
-    <router-link to="/gps">GPS</router-link> |
-    <router-link to="/calculator">Calculator</router-link> |
-    <router-link to="/rulesregulations">Rules/Regulations</router-link>
+    <router-link to="/TheB-Team/">Home</router-link> |
+    <router-link to="/TheB-Team/loginsignup">Log in/Sign up</router-link> |
+    <router-link to="/TheB-Team/trucklist">Truck List</router-link> |
+    <router-link to="/TheB-Team/routelist">Route List</router-link> |
+    <router-link to="/TheB-Team/truckdetails">Truck Details</router-link> |
+    <router-link to="/TheB-Team/routedetails">Route Details</router-link> |
+    <router-link to="/TheB-Team/gps">GPS</router-link> |
+    <router-link to="/TheB-Team/calculator">Calculator</router-link> |
+    <router-link to="/TheB-Team/rulesregulations">Rules/Regulations</router-link>
   </div>
   <router-view/>
   
