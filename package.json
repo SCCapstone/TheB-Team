@@ -40,6 +40,8 @@
     "sass-loader": "^10.2.0"
   },
   "Jest": {
-    "setupFilesAfterEnv": ["jest-sorted"]
+    "setupFilesAfterEnv": [
+      "jest-sorted"
+    ]
   }
 }
