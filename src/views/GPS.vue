@@ -1,49 +1,73 @@
 <template>
-  <div id="map" />
+  <div id="map">
+  <!--In the following div the HERE Map will render-->
+    <div id="mapContainer" style="height:600px;width:100%" ref="hereMap"></div>
+  </div>
 </template>
 
 <script>
-import mapboxgl from "mapbox-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
-import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
-import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
-import { onMounted } from "vue";
 export default {
-  setup() {
-    onMounted(() => {
-      mapboxgl.accessToken =
-        "pk.eyJ1IjoiYmNhcnRlcjk4IiwiYSI6ImNrdmxmM2lyaDM1YW8ybnFpd25pMXAweWkifQ.d9dq5Fh0ykTmsJmCmEKrAA";
-      const map = new mapboxgl.Map({
-        container: "map",
-        style: "mapbox://styles/mapbox/streets-v11",
-        center: [-96, 37.],
-        zoom:3
-      });
-  map.addControl(
-        new mapboxgl.GeolocateControl({
-          positionOptions: {
-            enableHighAccuracy: true
-        },
-        // When active the map will receive updates to the device's location as it changes.
-        trackUserLocation: true,
-        // Draw an arrow next to the location dot to indicate which direction the device is heading.
-        showUserHeading: true
-        }),
-      );
-  map.addControl(
-        new MapboxDirections({
-          accessToken: mapboxgl.accessToken,
-        }),
-        'top-left'
-      )    
-    });
-    return {};
+  name: "HereMap",
+  props: {
+    center: Object,
+    appId: String,
+    appCode: String,
+    lattitude: String,
+    longitude: String,
+    zoom: String,
   },
+  data() {
+    return {
+      platform: null,
+      apikey: "cCgquc2kOreS4dzfasyFzpRMXopvzbVUmRYgiuZdfmU"
+      // You can get the API KEY from developer.here.com
+    };
+  },
+  async mounted() {
+    // Initialize the platform object:
+    const platform = new window.H.service.Platform({
+      apikey: this.apikey
+    });
+    this.platform = platform;
+    this.initializeHereMap();
+  },
+  methods: {
+    initializeHereMap() { // rendering map
+
+      const mapContainer = this.$refs.hereMap;
+      const H = window.H;
+      // Obtain the default map types from the platform object
+      var maptypes = this.platform.createDefaultLayers();
+
+      // Instantiate (and display) a map object:
+      var map = new H.Map(mapContainer, maptypes.vector.normal.map, {
+        zoom: H.zoom,
+        center: this.center
+        // center object { lat: 40.730610, lng: -73.935242 }
+      });
+
+      addEventListener("resize", () => map.getViewPort().resize());
+
+      // add behavior control
+      new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+      // add UI
+      H.ui.UI.createDefault(map, maptypes);
+
+      window.addEventListener('resize', () => H.Map.getViewPort().resize() );
+      // End rendering the initial map
+    }
+  }
+  
 };
 </script>
 
-<style>
+<style scoped>
 #map {
-  height: 100vh;
+  width: 60vw;
+  min-width: 360px;
+  text-align: center;
+  margin: 5% auto;
+  background-color: #ccc;
 }
 </style>
