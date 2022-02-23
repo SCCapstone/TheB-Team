@@ -9,6 +9,7 @@
     <router-link to="/TheB-Team/gps">GPS</router-link> |
     <router-link to="/TheB-Team/calculator">Calculator</router-link> |
     <router-link to="/TheB-Team/rulesregulations">Rules/Regulations</router-link>
+    <HereMap  :center="center" />
   </div>
   <router-view/>
   
@@ -44,6 +45,7 @@ export default {
   name: 'app'
   
     }
+    
     
 
 
