@@ -1,10 +1,6 @@
 <template>
   <div id="nav">
     <router-link to="/loginsignup">Log in/Sign up</router-link> |
-    <router-link to="/trucklist">Truck List</router-link> |
-    <router-link to="/routelist">Route List</router-link> |
-    <router-link to="/truckdetails">Truck Details</router-link> |
-    <router-link to="/routedetails">Route Details</router-link> |
     <router-link to="/gps">GPS</router-link> |
     <router-link to="/calculator">Calculator</router-link> |
     <router-link to="/rulesregulations">Rules/Regulations</router-link>
