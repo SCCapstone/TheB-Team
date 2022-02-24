@@ -11,7 +11,7 @@ import Rulesregulations from '../views/Rulesregulations.vue'
 
 const routes = [
   {
-    path: '',
+    path: '/#',
     name: 'Home',
     component: Home
   },
