@@ -1,5 +1,5 @@
 <template>
-  <div id="nav">
+  <div id="nav" align="center">
     <router-link to="/loginsignup">Log in/Sign up</router-link> |
     <router-link to="/gps">GPS</router-link> |
     <router-link to="/calculator">Calculator</router-link> |
@@ -15,7 +15,7 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
   color: #000000;
 }
 
