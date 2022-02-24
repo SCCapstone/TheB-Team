@@ -1,16 +1,12 @@
 <template>
   <div class="home">
     <hr>
-    <h1>Welcome</h1>
+    <h1 class="text-ceter">Welcome</h1>
     <hr>
-    <h3>Features:</h3>
-    <p>
-      Calculator -- calculate the costs/fee totals for your routes<br>
-      Destinations List -- keep track of your destinations<br>
+    <h3 class="text-ceter">Features:</h3>
+    <p class="text-ceter">
       GPS -- see your routes <br>
-      Truck List -- keep track of your trucks<br>
-      Truck Details -- see the details of each of your trucks<br>
-      Route Details -- see the details of the routes for each of your trucks<br>
+      Calculator -- calculate the costs/fee totals for your routes<br>
       Rules/Regulations List -- see what laws/guidlines are required for each of your trucks
     </p>
   </div>
