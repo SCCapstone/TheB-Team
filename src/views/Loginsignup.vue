@@ -26,6 +26,10 @@
   </div> -->
 
   <div>
+    <hr>
+    <h1>Log in/Sign up</h1>
+    <hr>
+    <h3>Log in:</h3>
         <form @submit.prevent="register">
             <h2>Register</h2>
             <input
