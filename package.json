@@ -23,6 +23,7 @@
     "vue": "^3.0.0",
     "vue-mapbox-ts": "^0.6.4",
     "vue-router": "^4.0.0-0",
+    "vue-simple-search-dropdown": "^1.0.1",
     "vue2mapbox-gl": "^0.13.0"
   },
   "devDependencies": {
@@ -40,6 +41,8 @@
     "sass-loader": "^10.2.0"
   },
   "Jest": {
-    "setupFilesAfterEnv": ["jest-sorted"]
+    "setupFilesAfterEnv": [
+      "jest-sorted"
+    ]
   }
 }
