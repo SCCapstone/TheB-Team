@@ -1,6 +1,8 @@
 <template>
   <div class="rulesregulations">
+    <hr>
     <h1>Rules and Regulations:</h1>
+    <hr>
     <form @submit.prevent="onSubmit">
       <div class="form-group">
         <label>State: </label>  

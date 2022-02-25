@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" align="center">
     <hr>
     <h1 class="text-ceter">Welcome</h1>
     <hr>

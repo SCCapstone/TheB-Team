@@ -43,3 +43,23 @@ export default {
 
 
 </script>
+
+.seperator h5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1em;
+}
+
+.seperator h5::before,
+.seperator h5::after {
+  content: "";
+  display: block;
+  flex-grow: 1;
+  height: 1px;
+  background: #ccc;
+}
+
+.seperator h5 span {
+  padding: 0 2em;
+}
