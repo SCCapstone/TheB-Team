@@ -9,7 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@mapbox/mapbox-gl-directions": "^4.1.0",
+    "@googlemaps/js-api-loader": "^1.13.7",
     "@vue/composition-api": "^1.4.0",
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
@@ -17,16 +17,18 @@
     "here-maps": "^3.0.2",
     "heremap": "^2.2.6",
     "map-promisified": "^0.4.0",
-    "mapbox-gl": "^2.6.0",
-    "mapbox-gl-directions": "^3.0.3",
-    "mapbox-gl-geocoder": "^2.0.1",
     "moment": "^2.29.1",
     "openrouteservice-js": "^0.1.29",
-    "v-mapbox": "^1.9.0",
     "vue": "^3.0.0",
+<<<<<<< HEAD
     "vue-mapbox-ts": "^0.6.4",
     "vue-router": "^4.0.0-0",
+    "vue-simple-search-dropdown": "^1.0.1",
     "vue2mapbox-gl": "^0.13.0"
+=======
+    "vue-axios": "^3.4.1",
+    "vue-router": "^4.0.0-0"
+>>>>>>> 278a773263347cedfaa26226b0e2230df97965a7
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
