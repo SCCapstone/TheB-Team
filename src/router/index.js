@@ -8,6 +8,7 @@ import Routedetails from '../views/Routedetails.vue'
 import GPS from '../views/GPS.vue'
 import Calculator from '../views/Calculator.vue'
 import Rulesregulations from '../views/Rulesregulations.vue'
+import Condition from '../views/Condition.vue'
 
 const routes = [
   {
@@ -54,6 +55,11 @@ const routes = [
     path: '/TheB-Team/rulesregulations',
     name: 'Rulesregulations',
     component: Rulesregulations
+  },
+  {
+    path: '/TheB-Team/condition/:id',
+    name: 'Condition',
+    component: Condition
   }
 ]
 

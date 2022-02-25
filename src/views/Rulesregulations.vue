@@ -1,68 +1,75 @@
 <template>
   <div class="rulesregulations">
     <h3>Rules and Regulations:</h3>
-    <form @submit.prevent="onSubmit">
-      <div class="form-group">
-        <label>State: </label>  
-        <input
-          v-model="form.states"
-          class="form-control"
-          required
-        />
-      </div>
-
-      <div class="form-group">
-        <label>Name: </label>
-        <input
-          v-model="form.name"
-          class="form-control"
-          required
-        />
-      </div>
-
-      <div class="form-group">
-        <label>Type: </label>
-        <input
-          v-model="form.type"
-          class="form-control"
-          required
-        />
-      </div>
-        
-      <button type="submit">
-        Create Variable
-      </button>
-    </form>
+    <div v-for="(item, index) of conditions" :key="index">
+      <label>{{ index + 1 }}: {{ item.variable }} {{ item.condition }} {{ item.value }}</label>
+      <button @click="editCondition(item.id)">Edit</button>
+      <button @click="deleteCondition(item.id)">Delete</button>
+    </div>
+    <button class="fab-add-condition" @click="goToAddCondition">+</button>
   </div>
 </template>
 
 <script>
-import { createVariable, getVariables } from '@/firebase';
-import { sortVariables } from '@/utils';
-import { reactive } from 'vue';
+import { getConditions, deleteCondition } from '@/firebase';
+import router from '@/router';
 export default {
   name: 'Rulesregulations',
   props: {
     msg: String
   },
-  setup () {
-    const form = reactive({
-      name: '',
-      states: '',
-      type: ''
-    });
-
-    const onSubmit = async () => {
-      const items = getVariables();
-      const sorted = sortVariables(items);
-      console.log(sorted);
-      createVariable({ ...form });
-      form.name = '';
-      form.states = '';
-      form.type = '';
+  data () {
+    return {
+      conditions: []
     }
-
-    return { form, onSubmit };
+  },
+  async created () {
+    this.conditions = await getConditions();
+    console.log(this.conditions);
+  },
+  methods: {
+    goToAddCondition () {
+      router.push({
+        name: 'Condition',
+        params: {
+          id: 'new'
+        }
+      });
+    },
+    editCondition (id) {
+      router.push({
+        name: 'Condition',
+        params: {
+          id
+        }
+      });
+    },
+    deleteCondition (id) {
+      deleteCondition(id);
+      this.conditions = this.conditions.filter((condition) => {
+        return condition.id !== id;
+      });
+    }
   }
 }
 </script>
+
+<style scoped>
+  .fab-add-condition {
+  background-color: #F44336;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  background: #F44336;
+  border: none;
+  outline: none;
+  color: #FFF;
+  font-size: 36px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: .3s;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+}
+</style>

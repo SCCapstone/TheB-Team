@@ -16,6 +16,7 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const db = app.firestore();
 const variablesCollection = db.collection('Variables');
+const conditionsCollection = db.collection('Conditions');
 
 export const getVariables = async () => {
     const variables = await variablesCollection.get();
@@ -37,4 +38,35 @@ export const updateVariable = (id, variable) => {
 
 export const deleteVariable = (id) => {
     return variablesCollection.doc(id).delete();
+}
+
+export const getConditions = async () => {
+    const querySnapshot = await conditionsCollection.get();
+    const conditions = [];
+    querySnapshot.forEach((doc) => {
+        const condition = {
+            id: doc.id,
+            ...doc.data()
+        }
+        conditions.push(condition);
+    });
+    return conditions;
+}
+
+export const createCondition = (condition) => {
+    return conditionsCollection.add(condition);
+}
+
+export const getCondition = async (id) => {
+    const condition = await conditionsCollection.doc(id).get();
+    return condition.exists ? condition.data() : null;
+}
+
+export const updateCondition = async (id, condition) => {
+    console.log(condition);
+    return await conditionsCollection.doc(id).update(condition);
+}
+
+export const deleteCondition = (id) => {
+    return conditionsCollection.doc(id).delete();
 }
