@@ -1,49 +1,56 @@
 <template>
-  <div id="map" />
+  <div id="map">
+    <HereMap
+      ref="map"
+      apiKey="uxi-Q8ksdpRfsMe14Z8qrY7_XxlU3BdP9nz9en8KQ18"
+      latitude="37"
+      longitude="-121"
+      zoom="10"
+    />
+  </div>
+  <h2>Miles and times followed by their respective states</h2>
+  <div v-for="(route,index) in routes" v-html="route.text" :key="index"></div>
 </template>
 
 <script>
-import mapboxgl from "mapbox-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
-import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
-import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
-import { onMounted } from "vue";
-export default {
-  setup() {
-    onMounted(() => {
-      mapboxgl.accessToken =
-        "pk.eyJ1IjoiYmNhcnRlcjk4IiwiYSI6ImNrdmxmM2lyaDM1YW8ybnFpd25pMXAweWkifQ.d9dq5Fh0ykTmsJmCmEKrAA";
-      const map = new mapboxgl.Map({
-        container: "map",
-        style: "mapbox://styles/mapbox/streets-v11",
-        center: [-96, 37.],
-        zoom:3
-      });
-  map.addControl(
-        new mapboxgl.GeolocateControl({
-          positionOptions: {
-            enableHighAccuracy: true
-        },
-        // When active the map will receive updates to the device's location as it changes.
-        trackUserLocation: true,
-        // Draw an arrow next to the location dot to indicate which direction the device is heading.
-        showUserHeading: true
-        }),
-      );
-  map.addControl(
-        new MapboxDirections({
-          accessToken: mapboxgl.accessToken,
-        }),
-        'top-left'
-      )    
-    });
-    return {};
-  },
-};
-</script>
+  import HereMap from '../hereMap.vue'
+  
 
-<style>
-#map {
-  height: 100vh;
-}
-</style>
+  export default {
+    name: 'gps',
+    components: {
+      HereMap
+    },
+    data() {
+      return {
+        routes: []
+      }
+    },
+    methods: {
+      async getRoute() {
+        var response = await this.axios.get("https://route.ls.hereapi.com/routing/7.2/calculateroute.json", {
+          params: {
+            apiKey:"uxi-Q8ksdpRfsMe14Z8qrY7_XxlU3BdP9nz9en8KQ18",
+            waypoint0:"geo!33.520217,-80.672052",
+            waypoint1:"geo!35.725890,-78.589105", 
+            routeattributes:"wp,sm,sh,sc",
+            mode:"fastest;truck",
+            metricSystem: "imperial"
+          }});
+          this.routes = response.data.response.route[0].summaryByCountry;
+          this.routes.forEach((route) => {
+            route.text += route.country
+          });
+          console.log(this.routes)
+      }
+    },
+    mounted() {
+      // let map = this.$refs.map;
+      // map.drawRoute(
+      //   {lat: "37",lng: "-121"},{lat: "38",lng: "-122"}
+      // )
+      this.getRoute();
+    }
+  }
+
+</script>
