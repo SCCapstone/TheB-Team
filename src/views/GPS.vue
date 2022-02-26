@@ -1,5 +1,8 @@
 <template>
   <div id="map">
+    <hr>
+    <h1>GPS</h1>
+    <hr>
     <HereMap
       ref="map"
       apiKey="uxi-Q8ksdpRfsMe14Z8qrY7_XxlU3BdP9nz9en8KQ18"
@@ -17,7 +20,7 @@
   
 
   export default {
-    name: 'gps',
+    name: 'gpsView',
     components: {
       HereMap
     },

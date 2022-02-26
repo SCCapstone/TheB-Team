@@ -26,6 +26,12 @@
   </div> -->
 
   <div>
+    <hr>
+    <h1>Log in/Sign up</h1>
+    <hr>
+    </div>
+
+  <div v-if="!showLogin">
         <form @submit.prevent="register">
             <h2>Register</h2>
             <input
@@ -42,7 +48,7 @@
         </form>
     </div>
 
-  <div>
+  <div v-if="showLogin">
         <form @submit.prevent="login">
             <h2>Login</h2>
             <input
@@ -60,6 +66,10 @@
     </div>
 
     <div>
+      <button @click="show">{{ toggleText }}</button>
+    </div>
+
+    <div>
       <button @click="logout">Logout</button>
     </div>
 
@@ -69,16 +79,25 @@
 import firebase from 'firebase';
 
 export default {
-  name: 'Loginsignup',
+  name: 'LoginSignup',
     data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      showLogin: true,
+      toggleText: 'Register'
     }
   },
 
   methods: {
-       
+    show() {
+      if (this.toggleText !== 'Login') {
+        this.toggleText = 'Login';
+      } else {
+        this.toggleText = 'Register';
+      }
+      this.showLogin = !this.showLogin
+    },
          register() {
             firebase
                 .auth()
