@@ -51,7 +51,15 @@
 </template>
 
 <script>
-import { createCondition, updateCondition, getCondition } from '@/firebase';
+import {
+    createCondition,
+    createVariable,
+    getVariables,
+    deleteVariable,
+    updateCondition,
+    getCondition,
+    getConditionsByVariable
+} from '@/firebase';
 import { reactive } from 'vue';
 import router from '@/router';
 export default {
@@ -85,6 +93,18 @@ export default {
                 {
                     key: 'AL',
                     text: 'Alabama'
+                },
+                {
+                    key: 'SC',
+                    text: 'South Carolina'
+                },
+                {
+                    key: 'NC',
+                    text: 'North Carolina'
+                },
+                {
+                    key: 'GA',
+                    text: 'Georgia'
                 }
             ],
             operations: [
@@ -104,27 +124,50 @@ export default {
                 value: 0,
                 operation: '',
                 operand: 0
-            })
+            }),
+            condition: {},
+            variables: []
         }
     },
     async created () {
         this.id = this.$route.params.id;
         if (this.id !== 'new') {
-            const condition = await getCondition(this.id);
-            this.form.state = condition.state;
-            this.form.variable = condition.variable;
-            this.form.condition = condition.condition;
-            this.form.value = condition.value;
-            this.form.operation = condition.operation;
-            this.form.operand = condition.operand;
+            this.condition = await getCondition(this.id);
+            this.form.state = this.condition.state;
+            this.form.variable = this.condition.variable;
+            this.form.condition = this.condition.condition;
+            this.form.value = this.condition.value;
+            this.form.operation = this.condition.operation;
+            this.form.operand = this.condition.operand;
         }
+
+        this.variables = await getVariables();
     },
     methods: {
         async onSubmit () {
+            const variableExists = this.variables.find(variable => {
+                if (variable.name === this.form.variable) {
+                    return variable;
+                }
+            });
+            if (!variableExists) {
+                const variable = {
+                    name: this.form.variable,
+                    type: 'number'
+                }
+                createVariable(variable);
+            }
             if (this.id === 'new') {
                 createCondition({ ...this.form });
             } else {
                 updateCondition(this.id, { ...this.form });
+                this.variables = await getVariables();
+                for (let i = 0; i < this.variables.length; i++) {
+                    this.conditions = await getConditionsByVariable(this.variables[i].name);
+                    if (!this.conditions.length) {
+                        deleteVariable(this.variables[i].id);
+                    }
+                }
             }
             router.push({
                 name: 'Rulesregulations'

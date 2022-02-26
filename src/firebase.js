@@ -19,8 +19,29 @@ const variablesCollection = db.collection('Variables');
 const conditionsCollection = db.collection('Conditions');
 
 export const getVariables = async () => {
-    const variables = await variablesCollection.get();
-    variables.docs.map(doc => doc.data()).then(data => { return data });
+    const querySnapshot = await variablesCollection.get();
+    const variables = [];
+    querySnapshot.forEach((doc) => {
+        const variable = {
+            id: doc.id,
+            ...doc.data()
+        }
+        variables.push(variable);
+    });
+    return variables;
+}
+
+export const getVariablesFiltered = async (list) => {
+    const querySnapshot = await variablesCollection.where('name', 'in', list).get();
+    const variables = [];
+    querySnapshot.forEach((doc) => {
+        const variable = {
+            id: doc.id,
+            ...doc.data()
+        }
+        variables.push(variable);
+    });
+    return variables;
 }
 
 export const createVariable = (variable) => {
@@ -32,8 +53,8 @@ export const getVariable = async (id) => {
     return variable.exists ? variable.data() : null;
 }
 
-export const updateVariable = (id, variable) => {
-    return variablesCollection.doc(id).update(variable);
+export const updateVariable = async (id, variable) => {
+    return await variablesCollection.doc(id).update(variable);
 }
 
 export const deleteVariable = (id) => {
@@ -42,6 +63,32 @@ export const deleteVariable = (id) => {
 
 export const getConditions = async () => {
     const querySnapshot = await conditionsCollection.get();
+    const conditions = [];
+    querySnapshot.forEach((doc) => {
+        const condition = {
+            id: doc.id,
+            ...doc.data()
+        }
+        conditions.push(condition);
+    });
+    return conditions;
+}
+
+export const getConditionsByState = async (state) => {
+    const querySnapshot = await conditionsCollection.where('state', '==', state).get();
+    const conditions = [];
+    querySnapshot.forEach((doc) => {
+        const condition = {
+            id: doc.id,
+            ...doc.data()
+        }
+        conditions.push(condition);
+    });
+    return conditions;
+}
+
+export const getConditionsByVariable = async (variable) => {
+    const querySnapshot = await conditionsCollection.where('variable', '==', variable).get();
     const conditions = [];
     querySnapshot.forEach((doc) => {
         const condition = {
@@ -63,7 +110,6 @@ export const getCondition = async (id) => {
 }
 
 export const updateCondition = async (id, condition) => {
-    console.log(condition);
     return await conditionsCollection.doc(id).update(condition);
 }
 

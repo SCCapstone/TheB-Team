@@ -2,7 +2,7 @@
   <div class="rulesregulations">
     <h3>Rules and Regulations:</h3>
     <div v-for="(item, index) of conditions" :key="index">
-      <label>{{ index + 1 }}: {{ item.variable }} {{ item.condition }} {{ item.value }}</label>
+      <label>{{ index + 1 }}: {{ item.state }} {{ item.variable }} {{ item.condition }} {{ item.value }}</label>
       <button @click="editCondition(item.id)">Edit</button>
       <button @click="deleteCondition(item.id)">Delete</button>
     </div>
@@ -25,7 +25,6 @@ export default {
   },
   async created () {
     this.conditions = await getConditions();
-    console.log(this.conditions);
   },
   methods: {
     goToAddCondition () {
