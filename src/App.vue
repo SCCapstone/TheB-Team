@@ -1,6 +1,11 @@
 <template>
-  <div id="nav" align="center">
+  <div id="nav">
+    <router-link to="/TheB-Team/">Home</router-link> |
     <router-link to="/TheB-Team/loginsignup">Log in/Sign up</router-link> |
+    <router-link to="/TheB-Team/trucklist">Truck List</router-link> |
+    <router-link to="/TheB-Team/routelist">Route List</router-link> |
+    <router-link to="/TheB-Team/truckdetails">Truck Details</router-link> |
+    <router-link to="/TheB-Team/routedetails">Route Details</router-link> |
     <router-link to="/TheB-Team/gps">GPS</router-link> |
     <router-link to="/TheB-Team/calculator">Calculator</router-link> |
     <router-link to="/TheB-Team/rulesregulations">Rules/Regulations</router-link>
