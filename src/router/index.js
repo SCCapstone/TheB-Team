@@ -1,10 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Loginsignup from '../views/Loginsignup.vue'
-import Trucklist from '../views/Trucklist.vue'
-import Routelist from '../views/Routelist.vue'
-import Truckdetails from '../views/Truckdetails.vue'
-import Routedetails from '../views/Routedetails.vue'
 import GPS from '../views/GPS.vue'
 import Calculator from '../views/Calculator.vue'
 import Rulesregulations from '../views/Rulesregulations.vue'
@@ -12,7 +8,7 @@ import Condition from '../views/Condition.vue'
 
 const routes = [
   {
-    path: '/TheB-Team/',
+    path: '',
     name: 'Home',
     component: Home
   },
@@ -20,26 +16,6 @@ const routes = [
     path: '/TheB-Team/loginsignup',
     name: 'Loginsignup',
     component: Loginsignup
-  },
-  {
-    path: '/TheB-Team/trucklist',
-    name: 'Trucklist',
-    component: Trucklist
-  },
-  {
-    path: '/TheB-Team/routelist',
-    name: 'Routelist',
-    component: Routelist
-  },
-  {
-    path: '/TheB-Team/truckdetails',
-    name: 'Truckdetails',
-    component: Truckdetails
-  },
-  {
-    path: '/TheB-Team/routedetails',
-    name: 'Routedetails',
-    component: Routedetails
   },
   {
     path: '/TheB-Team/gps',
@@ -64,7 +40,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes
 })
 
