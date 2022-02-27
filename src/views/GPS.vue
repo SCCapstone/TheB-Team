@@ -8,12 +8,14 @@
     <h4>Point B</h4>
     <input type="number" v-model="lat2" placeholder="Lat2*">
     <input type="number" v-model="lng2" placeholder="Lng2*">
-    <button @click="generateMap(lat1,lng1,lat2,lng2)">Submit</button>
-    <button @click="resetMap">Reset Map</button>
+    <button @click="generateMap(lat1,lng1,lat2,lng2); showDiv();">Submit</button>
   </div>
   <div id="mapContainer" style="height:600px;width:100%" ref="hereMap"></div>
-  <h2>Miles and times followed by their respective states</h2>
-  <div v-for="(route,index) in routes" v-html="route.text" :key="index"></div>
+  <div id="displayDiv" style="display:none;"> 
+    <h2>Miles and times followed by their respective states</h2>
+    <div v-for="(route,index) in routes" v-html="route.text" :key="index"></div>
+    <button @click="sendRoutes()">Send Routes</button>
+  </div>
 </template>
 
 <script>
@@ -27,7 +29,8 @@
         lat1: 0,
         lng1: 0,
         lat2: 0,
-        lng2: 0
+        lng2: 0,
+        isMap: false
       }
     },
     methods: {
@@ -52,6 +55,8 @@
       
       //METHOD: generate a map using the Here mapping api and routing api to populate map with a route
       async generateMap(lat1,lng1,lat2,lng2) {
+        this.resetMap("mapContainer");
+        this.isMap = true;
         var geoStr = this.geoStr;
         const mapContainer = this.$refs.hereMap;
         const H = window.H;
@@ -95,8 +100,16 @@
         map.addObject(polyline);
         map.getViewModel().setLookAtData({bounds: polyline.getBoundingBox()});
       },
-      resetMap() {
-        window.location.reload(false);
+      resetMap(elementID) {
+        if (this.isMap == true) {
+          document.getElementById(elementID). innerHTML = "";
+        }
+      },
+      showDiv() {
+        document.getElementById("displayDiv").style.display = "";
+      },
+      sendRoutes() {
+        this.$emit('submitRoutes', this.routes)
       }
     },
     mounted() {
