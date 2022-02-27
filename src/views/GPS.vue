@@ -1,5 +1,8 @@
 <template>  
   <div>
+    <hr>
+    <h1>GPS</h1>
+    <hr>
     <p>Enter a latitude followed by a longitude for both points and click submit (No route will be displayed if a route for your coordinates does not exist)</p>
     <p>An example of a set of valid coordinates is: 33.520217,-80.672052 and 35.725890, -78.589105</p>
     <h4>Point A</h4>
@@ -20,7 +23,7 @@
 
 <script>
  export default {
-    name: 'gps',
+    name: 'gpsView',
     data() {
       return {
         routes: [],

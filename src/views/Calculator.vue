@@ -76,7 +76,7 @@
 //import firebase from 'firebase';
 
 export default {
-  name: 'Dropdown',
+  name: 'DropdownView',
     template: 'Dropdown',
     props: {
       name: {

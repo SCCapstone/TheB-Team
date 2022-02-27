@@ -63,7 +63,7 @@ import {
 import { reactive } from 'vue';
 import router from '@/router';
 export default {
-    name: 'Condition',
+    name: 'ConditionView',
     data () {
         return {
             id: '',
