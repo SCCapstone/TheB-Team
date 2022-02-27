@@ -1,6 +1,8 @@
 <template>
   <div class="rulesregulations">
-    <h3>Rules and Regulations:</h3>
+    <hr>
+    <h1>Rules and Regulations:</h1>
+    <hr>
     <div v-for="(item, index) of conditions" :key="index">
       <label>{{ index + 1 }}: {{ item.state }} {{ item.variable }} {{ item.condition }} {{ item.value }}</label>
       <button @click="editCondition(item.id)">Edit</button>
@@ -14,7 +16,7 @@
 import { getConditions, deleteCondition } from '@/firebase';
 import router from '@/router';
 export default {
-  name: 'Rulesregulations',
+  name: 'RulesRegulations',
   props: {
     msg: String
   },
