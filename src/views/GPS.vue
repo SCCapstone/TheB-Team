@@ -1,7 +1,11 @@
-<template>
+<template>  
   <div>
+    <p>Enter a latitude followed by a longitude for both points and click submit (No route will be displayed if a route for your coordinates does not exist)</p>
+    <p>An example of a set of valid coordinates is: 33.520217,-80.672052 and 35.725890, -78.589105</p>
+    <h4>Point A</h4>
     <input type="number" v-model="lat1" placeholder="Lat1">
     <input type="number" v-model="lng1" placeholder="Lng1*">
+    <h4>Point B</h4>
     <input type="number" v-model="lat2" placeholder="Lat2*">
     <input type="number" v-model="lng2" placeholder="Lng2*">
     <button @click="generateMap(lat1,lng1,lat2,lng2)">Submit</button>
@@ -13,12 +17,8 @@
 </template>
 
 <script>
-  
-
-  export default {
+ export default {
     name: 'gps',
-    components: {
-    },
     data() {
       return {
         routes: [],
@@ -48,7 +48,6 @@
               route.text += route.country
           });
           console.log(this.routes)
-
       },
       
       //METHOD: generate a map using the Here mapping api and routing api to populate map with a route
@@ -61,7 +60,6 @@
         });
         this.platform = platform;
         this.routingService = this.platform.getRoutingService();
-
         //THIS IS FOR THE MAP
         // Obtain the default map types from the platform object
         var maptypes = this.platform.createDefaultLayers();
@@ -75,7 +73,6 @@
         // add UI
         H.ui.UI.createDefault(map, maptypes);
         // End rendering the initial map
-
         //THIS IS FOR THE ROUTING API
         var response = await this.axios.get("https://route.ls.hereapi.com/routing/7.2/calculateroute.json", {
           params: {
@@ -88,7 +85,6 @@
         }});
         this.getRoute(lat1,lng1,lat2,lng2);
         this.points = response.data.response.route[0].shape;
-
         var linestring = new H.geo.LineString();
         this.points.forEach(function(point){
             let [lat, lng] = point.split(",");
@@ -97,17 +93,13 @@
         var polyline = new H.map.Polyline(linestring, { style: { lineWidth: 5 }});
         
         map.addObject(polyline);
-
         map.getViewModel().setLookAtData({bounds: polyline.getBoundingBox()});
       },
-
       resetMap() {
         window.location.reload(false);
       }
     },
     mounted() {
-
     }
   }
-
-</script>
+  </script>
