@@ -33,10 +33,10 @@ export default {
     name: 'calculatorView',
     data() {
         return {
-            lat1: 33.520217,
-            lng1: -80.672052,
-            lat2: 35.725890,
-            lng2: -78.589105,
+            lat1: 0,
+            lng1: 0,
+            lat2: 0,
+            lng2: 0,
             routes: [],
             states: [],
             conditions: [],
