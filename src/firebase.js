@@ -87,6 +87,19 @@ export const getConditionsByState = async (state) => {
     return conditions;
 }
 
+export const getConditionsByStates = async (list) => {
+    const querySnapshot = await conditionsCollection.where('state', 'in', list).get();
+    const conditions = [];
+    querySnapshot.forEach((doc) => {
+        const condition = {
+            id: doc.id,
+            ...doc.data()
+        }
+        conditions.push(condition);
+    });
+    return conditions;
+}
+
 export const getConditionsByVariable = async (variable) => {
     const querySnapshot = await conditionsCollection.where('variable', '==', variable).get();
     const conditions = [];

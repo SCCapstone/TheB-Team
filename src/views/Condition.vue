@@ -61,6 +61,7 @@ import {
     getConditionsByVariable
 } from '@/firebase';
 import { reactive } from 'vue';
+import { states } from '@/utils';
 import router from '@/router';
 export default {
     name: 'ConditionView',
@@ -69,7 +70,7 @@ export default {
             id: '',
             conditions: [
                 {
-                    key: 'lessthan',
+                    key: 'less-than',
                     text: '<'
                 },
                 {
@@ -89,24 +90,6 @@ export default {
                     text: '='
                 }
             ],
-            states: [
-                {
-                    key: 'AL',
-                    text: 'Alabama'
-                },
-                {
-                    key: 'SC',
-                    text: 'South Carolina'
-                },
-                {
-                    key: 'NC',
-                    text: 'North Carolina'
-                },
-                {
-                    key: 'GA',
-                    text: 'Georgia'
-                }
-            ],
             operations: [
                 {
                     key: 'addFlat',
@@ -117,6 +100,7 @@ export default {
                     text: 'Add Per Mile'
                 }
             ],
+            states: [],
             form: reactive({
                 state: '',
                 variable: '',
@@ -141,6 +125,7 @@ export default {
             this.form.operand = this.condition.operand;
         }
 
+        this.states = states;
         this.variables = await getVariables();
     },
     methods: {
