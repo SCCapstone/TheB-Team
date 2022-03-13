@@ -3,32 +3,37 @@
     <hr>
     <h1>GPS</h1>
     <hr>
-    <p>Enter a latitude followed by a longitude for both points and click submit (No route will be displayed if a route for your coordinates does not exist)</p>
-    <p>An example of a set of valid coordinates is: 33.520217,-80.672052 and 35.725890, -78.589105</p>
+    <p>Enter an address for both Point A and Point B (Note: No route will be displayed if a route for your coordinates does not exist)</p>
     <h4>Point A</h4>
-    <input type="number" v-model="lat1" placeholder="Lat1">
-    <input type="number" v-model="lng1" placeholder="Lng1">
+    <input type="text" v-model="address1" placeholder="Point A">
     <h4>Point B</h4>
-    <input type="number" v-model="lat2" placeholder="Lat2">
-    <input type="number" v-model="lng2" placeholder="Lng2">
-    <button @click="generateMap(lat1,lng1,lat2,lng2); showDiv();">Submit</button>
+    <input type="text" v-model="address2" placeholder="Point B">
+    <button @click="generateMap(address1, address2); showDiv();">Submit</button>
   </div>
   <div id="mapContainer" style="height:600px;width:100%" ref="hereMap"></div>
   <div id="displayDiv" style="display:none;"> 
     <h2>Miles and times followed by their respective states</h2>
     <div v-for="(route,index) in routes" v-html="route.text" :key="index"></div>
-    <button @click="sendRoutes()">Send Routes</button>
+    <button @click="showDirections();">Directions</button>
+  </div>
+  <div id="directionsDiv" style="display:none;">
+    <h3>Directions</h3>
+    <div v-for="(maneuver,index) in directions" v-html="maneuver.instruction" :key="index"></div>
   </div>
 </template>
 
 <script>
 import { getRoute } from '@/utils.js';
+import { getCoord } from '@/utils.js';
  export default {
     name: 'gpsView',
     data() {
       return {
         routes: [],
         points: [],
+        directions: [],
+        address1: "",
+        address2: "",
         lat1: 0,
         lng1: 0,
         lat2: 0,
@@ -38,7 +43,7 @@ import { getRoute } from '@/utils.js';
     },
     methods: {
       //METHOD: generate a map using the Here mapping api and routing api to populate map with a route
-      async generateMap(lat1,lng1,lat2,lng2) {
+      async generateMap(address1, address2) {
         this.resetMap("mapContainer");
         this.isMap = true;
         const mapContainer = this.$refs.hereMap;
@@ -54,20 +59,34 @@ import { getRoute } from '@/utils.js';
         // Instantiate (and display) a map object:
         const map = new H.Map(mapContainer, maptypes.vector.normal.map, {
             zoom: 10,
-            center: { lat: lat1, lng: lng1 }
         });
         // add behavior control
         new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
         // add UI
         H.ui.UI.createDefault(map, maptypes);
         // End rendering the initial map
-        //THIS IS FOR THE ROUTING API
-        var response = await getRoute(lat1,lng1,lat2,lng2);
-        this.routes = response.data.response.route[0].summaryByCountry;
+        //THIS IS FOR THE ROUTING API & GEOCODING API
+        var response1 = await getCoord(address1);
+        var response2 = await getCoord(address2);
+
+        this.lat1 = response1.data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
+        this.lng1 = response1.data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
+        this.lat2 = response2.data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
+        this.lng2 = response2.data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
+        console.log(this.lat1);
+        console.log(this.lng1);
+        console.log(this.lat2);
+        console.log(this.lng2);
+
+        var response3 = await getRoute(this.lat1,this.lng1,this.lat2,this.lng2);
+        this.routes = response3.data.response.route[0].summaryByCountry
+        this.directions = response3.data.response.route[0].leg[0].maneuver
+        console.log(this.routes);
+        console.log(this.directions);
         this.routes.forEach((route) => {
             route.text += route.country
         });
-        this.points = response.data.response.route[0].shape;
+        this.points = response3.data.response.route[0].shape;
         var linestring = new H.geo.LineString();
         this.points.forEach(function(point){
             let [lat, lng] = point.split(",");
@@ -85,6 +104,9 @@ import { getRoute } from '@/utils.js';
       },
       showDiv() {
         document.getElementById("displayDiv").style.display = "";
+      },
+      showDirections() {
+        document.getElementById("directionsDiv").style.display = "";
       },
       sendRoutes() {
         this.$emit('submitRoutes', this.routes)

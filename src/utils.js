@@ -23,6 +23,16 @@ const getRoute = async (lat1,lng1,lat2,lng2) => {
     return response;
 }
 
+const getCoord = async (address) => {
+    var response = await axios.get("https://geocoder.ls.hereapi.com/6.2/geocode.json", {
+        params: {
+            apiKey:"x3u91OpwIPzEJL_v89yy8xy7V1tZxjdB83oA7b3PL70",
+            searchtext:`${address}`
+        }
+    });
+    return response;
+}
+
 const states = [
     {
         key: 'AL',
@@ -53,5 +63,6 @@ const states = [
 export {
     sortVariables,
     getRoute,
+    getCoord,
     states
 }
