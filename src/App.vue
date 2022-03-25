@@ -1,14 +1,19 @@
+<script>
+import Sidebar from '@/components/Sidebar'
+import { sidebarWidth2 } from '@/components/state'
+export default {
+  components: { Sidebar },
+  setup() {
+    return { sidebarWidth2 }
+  }
+}
+</script>
 <template>
-  <div id="nav" align="center">
-    <router-link to="/TheB-Team/loginsignup">Log in/Sign up</router-link> |
-    <router-link to="/TheB-Team/gps">GPS</router-link> |
-    <router-link to="/TheB-Team/calculator">Calculator</router-link> |
-    <router-link to="/TheB-Team/rulesregulations">Rules/Regulations</router-link>
+  <Sidebar />
+  <div :style="{ 'margin-left': sidebarWidth2 }">
+    <router-view />
     <HereMap  :center="center" />
   </div>
-  <router-view/>
-  
-  
 </template>
 
 <style>
@@ -16,7 +21,6 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: left;
   color: #000000;
 }
 
@@ -34,14 +38,3 @@
 }
 </style>
 
-<script>
-
-export default {
-  name: 'app'
-  
-    }
-    
-    
-
-
-</script>
