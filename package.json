@@ -15,7 +15,7 @@
     "@vue/composition-api": "^1.4.0",
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
-    "firebase": "^8.10.0",
+    "firebase": "^8.10.1",
     "here-maps": "^3.0.2",
     "heremap": "^2.2.6",
     "map-promisified": "^0.4.0",
@@ -24,6 +24,7 @@
     "vue": "^3.0.0",
     "vue-axios": "^3.4.1",
     "vue-router": "^4.0.0-0",
+    "vuex": "^4.0.2",
     "yarn": "^1.22.18"
   },
   "devDependencies": {

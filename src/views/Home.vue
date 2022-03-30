@@ -5,6 +5,9 @@
     <hr>
     <div align="center">
     <h3>Features:</h3>
+    <div> 
+      <!-- <p>Welcome: {{user.email}}</p> --> 
+    </div>
     <p>
       GPS -- see your routes <br>
       Calculator -- calculate the costs/fee totals for your routes<br>
@@ -15,7 +18,22 @@
 </template>
 
 <script>
+import firebase from 'firebase';
 export default {
+  data() {
+    return {
+      user: null
+    };
+  },
+  created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.user = user;
+      } else {
+        this.user = null;
+      }
+    });
+  },
   name: 'HomeView',
   props: {
     msg: String
