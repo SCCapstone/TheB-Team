@@ -3,11 +3,14 @@
         <hr>
         <h1>Calculator</h1>
         <hr>
-        <p>Enter an address for both points and click submit to get your permit price</p>
+        <p>Enter a latitude followed by a longitude for both points and click submit to get your permit price</p>
+        <p>An example of a set of valid coordinates is: 33.520217,-80.672052 and 35.725890, -78.589105</p>
         <h4>Point A</h4>
-        <input type="text" v-model="address1" placeholder="adress1">
+        <input type="number" v-model="lat1" placeholder="Lat1">
+        <input type="number" v-model="lng1" placeholder="Lng1">
         <h4>Point B</h4>
-        <input type="text" v-model="address2" placeholder="address2">
+        <input type="number" v-model="lat2" placeholder="Lat2">
+        <input type="number" v-model="lng2" placeholder="Lng2">
         <button @click="getVariables()">Start Calculation</button>
         <div v-for="(variable, index) in variables" :key="index">
             <label>{{ variable.name }}: </label>
@@ -23,15 +26,13 @@
 </template>
 
 <script>
-import { getRoute, states, getCoord } from '@/utils';
+import { getRoute, states } from '@/utils';
 import { getConditionsByStates, getVariablesFiltered } from '@/firebase';
 
 export default {
     name: 'calculatorView',
     data() {
         return {
-            address1: "",
-            address2: "",
             lat1: 0,
             lng1: 0,
             lat2: 0,
@@ -52,13 +53,6 @@ export default {
     methods: {
         async getVariables() {
             this.showPrice = false;
-            var add1 = await getCoord(this.address1);
-            var add2 = await getCoord(this.address2);
-
-            this.lat1 = add1.data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
-            this.lng1 = add1.data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
-            this.lat2 = add2.data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
-            this.lng2 = add2.data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
             const response = await getRoute(this.lat1, this.lng1, this.lat2, this.lng2);
             this.routes = response.data.response.route[0].summaryByCountry;
             const routeStates = [];
@@ -79,7 +73,6 @@ export default {
                 }
             });
             this.variables = await getVariablesFiltered(variableQuery);
-            
         },
         calculate () {
             this.conditions.forEach(condition => {
