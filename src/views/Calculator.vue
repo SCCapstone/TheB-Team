@@ -107,3 +107,19 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+h4{
+    color: #4CAF50;
+  }
+  h2,h3{
+    text-shadow: 1px 1px 1px #4CAF50,
+                 2px 2px 1px #4CAF50;
+  }
+  .display{
+      text-align: center;
+  }
+  input{
+    width: 20%;
+  }
+</style>

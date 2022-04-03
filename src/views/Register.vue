@@ -3,12 +3,13 @@
     <div>
           <div>
             <form>
+                <label>Email address</label>
                 <input
-                    type="email"
                     placeholder="Email address..."
                     v-model="user.email"
                 />
                 <br>
+                <label>Password</label>
                 <input
                     type="password"
                     placeholder="password..."
@@ -17,6 +18,7 @@
                 <br>
                 <button @click="register">Register</button>
             </form>
+            <span style="color: red">{{ error }}</span>
             </div>
     </div>
 </template>
@@ -31,8 +33,8 @@ export default {
             user: {
                 email: '',
                 password: ''
-            }
-        
+            },
+            error: ''
         }
     },
     methods: {
@@ -41,11 +43,10 @@ export default {
                 .auth()
                 .createUserWithEmailAndPassword(this.user.email, this.user.password)
                 .then(() => {
-                    alert('Successfully registered! Please login.');
-                    this.$router.push('/TheB-Team/loginsignup');
+                    this.$router.push('/');
                 })
                 .catch(error => {
-                    alert(error.message);
+                    this.error = error.message;
                 });
         }
     }

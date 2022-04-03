@@ -4,13 +4,14 @@
             <h3>Forgot Password</h3>
             <div>
                 <input
-                    type="email"
                     placeholder="Email address..."
                     v-model="user.email"
                 />
             </div>
             <button @click="forgetPassword">Reset password</button>
         </form>
+        <span style="color: red">{{ error }}</span>
+        <span>{{ success }}</span>
     </div>
 </template>
 
@@ -23,7 +24,9 @@ export default {
         return { 
             user: {
                 email: ''
-            }
+            },
+            error: '',
+            success: ''
         }
     },
     methods: {
@@ -32,12 +35,13 @@ export default {
             .auth()
             .sendPasswordResetEmail(this.user.email)
             .then(() => {
-                alert('Check your registered email to reset the password!')
+                this.error = '';
                 this.user = {   
-                email: ''
+                    email: ''
                 }
+                this.success = 'An email has been sent to your account!'
             }).catch((error) => {
-            alert(error)
+                this.error = error;
             });
         },
   }
