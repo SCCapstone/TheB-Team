@@ -14,7 +14,7 @@
 
             <div class="form-group">
                 <label>Email address</label>
-                <input type="email"
+                <input
                   placeholder="Email address..." 
                   class="form-control form-control-lg" 
                   v-model="user.email" />
@@ -31,17 +31,18 @@
             <button type="submit" class="btn btn-dark btn-lg btn-block">Sign In</button>
 
           </form>
+          <span style="color: red">{{ error }}</span>
         </div>
 
         <div>
           <p class="forgot-password text-right mt-2 mb-4">
-                <router-link to="/TheB-Team/forgotpassword">Forgot password ?</router-link>
+                <span class="link" @click="goToForgotPassword">Forgot password?</span>
             </p>
         </div>
 
         <div>
           <p class="forgot-password text-right mt-2 mb-4">
-                <router-link to="/TheB-Team/register">No account? Register here</router-link>
+                <span class="link" @click="goToRegister">No account? Register here</span>
             </p>
         </div>
   </div>
@@ -60,7 +61,8 @@ export default {
       user: {
         email: '',
         password: ''
-      }
+      },
+      error: ''
     }
   },
   created() {
@@ -69,11 +71,14 @@ export default {
   methods: {
   
     login() {
+        this.error=''
         firebase
         .auth()
         .signInWithEmailAndPassword(this.user.email, this.user.password)
         .then(() => {
           this.$router.push('/');
+        }).catch((error) => {
+            this.error = error;
         });
     },
     
@@ -82,6 +87,20 @@ export default {
         .auth()
         .signOut()
     },
+    goToRegister() {
+      this.$router.push('/TheB-Team/register')
+    },
+    goToForgotPassword() {
+      this.$router.push('/TheB-Team/forgotpassword')
+    }
   }
 }
 </script>
+
+<style scoped>
+.link {
+     cursor:pointer;
+     color:blue;
+     text-decoration:underline;
+}
+</style>

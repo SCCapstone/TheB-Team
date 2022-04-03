@@ -1,13 +1,13 @@
 <template>
   <div class="home">
     <hr>
-    <h1>Home</h1>
+    <h1>Welcome</h1>
     <hr>
     <div align="center">
-    <h3>Features:</h3>
     <div v-if="isLoggedIn"> 
       <p>Welcome: {{user.email}}</p> 
     </div>
+    <h3>Features:</h3>
     <p>
       GPS -- see your routes <br>
       Calculator -- calculate the costs/fee totals for your routes<br>
