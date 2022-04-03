@@ -48,7 +48,7 @@ export default {
       :class="{ 'rotate-180': collapsed }"
       @click="toggleSidebar"
     >
-      <i class="fas fa-angle-double-left" />
+      <i class="fa-solid fa-angles-left" />
     </span>
   </div>
 </template>
