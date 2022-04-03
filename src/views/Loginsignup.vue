@@ -7,7 +7,7 @@
     </div>
 
     <div>
-          <div v-if="isLoggedIn">
+          <div>
 
           <form @submit.prevent="login">
             <h3>Sign In</h3>
@@ -33,17 +33,13 @@
           </form>
         </div>
 
-        <div v-if="!isLoggedIn">
-          <button @click="logout">Logout</button>
-        </div>
-
-        <div v-if="isLoggedIn">
+        <div>
           <p class="forgot-password text-right mt-2 mb-4">
                 <router-link to="/TheB-Team/forgotpassword">Forgot password ?</router-link>
             </p>
         </div>
 
-        <div v-if="isLoggedIn">
+        <div>
           <p class="forgot-password text-right mt-2 mb-4">
                 <router-link to="/TheB-Team/register">No account? Register here</router-link>
             </p>
@@ -67,7 +63,9 @@ export default {
       }
     }
   },
-
+  created() {
+    this.logout();
+  },
   methods: {
   
     login() {
@@ -75,26 +73,15 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.user.email, this.user.password)
         .then(() => {
-            this.$router.push('/')
-        })
-        .catch((error) => {
-          alert(error.message);
+          this.$router.push('/');
         });
     },
     
     logout() {
-            firebase
-                .auth()
-                .signOut()
-                .then(() => {
-                    alert('Successfully logged out');
-                    this.$router.push('/');
-                })
-                .catch(error => {
-                    alert(error.message);
-                    this.$router.push('/');
-                });
-        },
-    }
+      firebase
+        .auth()
+        .signOut()
+    },
+  }
 }
 </script>
