@@ -98,6 +98,10 @@ export default {
                 {
                     key: 'addPerMile',
                     text: 'Add Per Mile'
+                },
+                {
+                    key: 'addPer4LaneMile',
+                    text: 'Add Per 4 Lane Mile'
                 }
             ],
             states: [],

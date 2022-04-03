@@ -83,6 +83,7 @@ import { getCoord } from '@/utils.js';
         console.log(this.lng2);
 
         var response3 = await getRoute(this.lat1,this.lng1,this.lat2,this.lng2);
+        console.log(response3);
         this.routes = response3.data.response.route[0].summaryByCountry
         this.directions = response3.data.response.route[0].leg[0].maneuver
         console.log(this.routes);
