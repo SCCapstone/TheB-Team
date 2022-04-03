@@ -33,7 +33,7 @@
           </form>
         </div>
 
-        <div>
+        <div v-if="!isLoggedIn">
           <button @click="logout">Logout</button>
         </div>
 
