@@ -3,7 +3,7 @@
         <hr>
         <h1>Calculator</h1>
         <hr>
-        <p>Enter an address for both points and click submit to get your permit price</p>
+        <p>Enter an address for the beginning and end of your route and click submit to get your permit price</p>
         <h4>Point A</h4>
         <input type="text" v-model="address1" placeholder="Address 1">
         <h4>Point B</h4>
@@ -43,6 +43,7 @@ export default {
             inputs: {},
             permit: 0,
             mileage: {},
+            fourLaneMileage: {},
             showPrice: false
         }
     },
@@ -52,6 +53,7 @@ export default {
     methods: {
         async getVariables() {
             this.showPrice = false;
+            this.permit = 0;
             var response1 = await getCoord(this.address1);
             var response2 = await getCoord(this.address2);
 
@@ -99,6 +101,8 @@ export default {
                         this.permit += condition.operand;
                     } else if (condition.operation === 'addPerMile') {
                         this.permit += condition.operand * this.mileage[condition.state];
+                    } else if (condition.operation === 'addPer4LaneMile') {
+                        this.permit += condition.operand * this.fourLaneMileage[condition.state];
                     }
                 }
             });
