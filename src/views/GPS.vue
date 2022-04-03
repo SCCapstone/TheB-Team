@@ -11,7 +11,7 @@
     <button @click="generateMap(address1, address2); showDiv();">Submit</button>
   </div>
   <div id="mapContainer" style="height:600px;width:100%" ref="hereMap"></div>
-  <div id="displayDiv" style="display:none;"> 
+  <div class="display" id="displayDiv" style="display:none;"> 
     <h2>Miles and times followed by their respective states</h2>
     <div v-for="(route,index) in routes" v-html="route.text" :key="index"></div>
     <button @click="showDirections();">Directions</button>
@@ -19,6 +19,9 @@
   <div id="directionsDiv" style="display:none;">
     <h3>Directions</h3>
     <div v-for="(maneuver,index) in directions" v-html="maneuver.instruction" :key="index"></div>
+  </div>
+  <div id="printButton" style="display:none;">
+    <button @click="printDiv('directionsDiv');">Print Directions</button>
   </div>
 </template>
 
@@ -38,7 +41,8 @@ import { getCoord } from '@/utils.js';
         lng1: 0,
         lat2: 0,
         lng2: 0,
-        isMap: false
+        isMap: false,
+        w: null
       }
     },
     methods: {
@@ -107,12 +111,48 @@ import { getCoord } from '@/utils.js';
       },
       showDirections() {
         document.getElementById("directionsDiv").style.display = "";
+        document.getElementById("printButton").style.display = "";
       },
       sendRoutes() {
         this.$emit('submitRoutes', this.routes)
+      },
+      //used to print out directions
+      printDiv(divName) {
+        if(document.getElementById(divName) != null) {
+          var printContents = document.getElementById(divName).innerHTML;
+        }
+        this.w=window.open();
+        this.w.document.write(printContents);
+        this.w.print();
+        this.w.close();
       }
     },
     mounted() {
     }
   }
   </script>
+  <style scoped>
+  h4{
+    color: #4CAF50;
+  }
+  button{
+    border-radius: 12%;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    padding: 2px 4px;
+    cursor: pointer;
+  }
+  h2,h3{
+    text-shadow: 1px 1px 1px #4CAF50,
+                 2px 2px 1px #4CAF50;
+  }
+  .display{
+      text-align: center;
+  }
+  input{
+    width: 20%;
+  }
+  </style>
