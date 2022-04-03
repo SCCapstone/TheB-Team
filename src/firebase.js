@@ -1,6 +1,9 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
 
+import 'firebase/auth';
+//const functions = require('firebase-functions');
+//const admin = require('firebase-admin')
 
 const firebaseConfig = {
   apiKey: "AIzaSyB_bRrdaCJeLBH9F8qRqP9FsSx1XmrseN0",
@@ -17,6 +20,30 @@ const app = firebase.initializeApp(firebaseConfig);
 const db = app.firestore();
 const variablesCollection = db.collection('Variables');
 const conditionsCollection = db.collection('Conditions');
+
+const auth = firebase.auth(app)
+export { auth }
+/*exports.AddUserRole = functions.auth.user().onCreate(async (authUser) => {
+
+    if (authUser.email) {
+      const customClaims = {
+        admin: true,
+      };
+      try {
+        admin.auth().setCustomUserClaims(authUser.uid, customClaims)
+  
+        return db.collection("roles").doc(authUser.uid).set({
+          email: authUser.email,
+          role: customClaims
+        })
+  
+      } catch (error) {
+        console.log(error)
+      }
+  
+    }
+  
+  });*/
 
 export const getVariables = async () => {
     const querySnapshot = await variablesCollection.get();

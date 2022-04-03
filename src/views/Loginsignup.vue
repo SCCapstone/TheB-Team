@@ -5,47 +5,51 @@
     <h1>Log in/Sign up</h1>
     <hr>
     </div>
-    <div v-if="!showLogin">
-        <form @submit.prevent="register">
-            <h2>Register</h2>
-            <input
-                type="email"
-                placeholder="Email address..."
-                v-model="email"
-            />
-            <input
-                type="password"
-                placeholder="password..."
-                v-model="password"
-            />
-            <button type="submit">Register</button>
-        </form>
-    </div>
-
-  <div v-if="showLogin">
-        <form @submit.prevent="login">
-            <h2>Login</h2>
-            <input
-                type="email"
-                placeholder="Email address..."
-                v-model="email"
-            />
-            <input
-                type="password"
-                placeholder="password..."
-                v-model="password"
-            />
-            <button type="submit">Login</button>
-        </form>
-    </div>
 
     <div>
-      <button @click="show">{{ toggleText }}</button>
-    </div>
+          <div>
 
-    <div>
-      <button @click="logout">Logout</button>
-    </div>
+          <form @submit.prevent="login">
+            <h3>Sign In</h3>
+
+            <div class="form-group">
+                <label>Email address</label>
+                <input type="email"
+                  placeholder="Email address..." 
+                  class="form-control form-control-lg" 
+                  v-model="user.email" />
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" 
+                  placeholder="password..."
+                  class="form-control form-control-lg" 
+                  v-model="user.password" />
+            </div>
+
+            <button type="submit" class="btn btn-dark btn-lg btn-block">Sign In</button>
+
+          </form>
+        </div>
+
+        <div>
+          <button @click="logout">Logout</button>
+        </div>
+
+        <div>
+          <p class="forgot-password text-right mt-2 mb-4">
+                <router-link to="/TheB-Team/forgotpassword">Forgot password ?</router-link>
+            </p>
+        </div>
+
+        <div>
+          <p class="forgot-password text-right mt-2 mb-4">
+                <router-link to="/TheB-Team/register">No account? Register here</router-link>
+            </p>
+        </div>
+  </div>
+
   </div>
 
 </template>
@@ -57,46 +61,26 @@ export default {
   name: 'LoginSignup',
     data () {
     return {
-      email: '',
-      password: '',
-      showLogin: true,
-      toggleText: 'Register'
+      user: {
+        email: '',
+        password: ''
+      }
     }
   },
 
   methods: {
-    show() {
-      if (this.toggleText !== 'Login') {
-        this.toggleText = 'Login';
-      } else {
-        this.toggleText = 'Register';
-      }
-      this.showLogin = !this.showLogin
+  
+    login() {
+        firebase
+        .auth()
+        .signInWithEmailAndPassword(this.user.email, this.user.password)
+        .then(() => {
+            this.$router.push('/')
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
     },
-         register() {
-            firebase
-                .auth()
-                .createUserWithEmailAndPassword(this.email, this.password)
-                .then(() => {
-                    alert('Successfully registered! Please login.');
-                    this.$router.push('/');
-                })
-                .catch(error => {
-                    alert(error.message);
-                });
-        },
-        login() {
-            firebase
-                .auth()
-                .signInWithEmailAndPassword(this.email, this.password)
-                .then(() => {
-                    alert('Successfully logged in');
-                    this.$router.push('/dashboard');
-                })
-                .catch(error => {
-                    alert(error.message);
-                });
-        },
     
     logout() {
             firebase
@@ -112,8 +96,5 @@ export default {
                 });
         },
     }
-  /*props: {
-    msg: String
-  }*/
 }
 </script>
