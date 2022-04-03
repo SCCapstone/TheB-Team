@@ -6,7 +6,7 @@
     <div v-for="(item, index) of conditions" :key="index">
       <label>{{ index + 1 }}: {{ item.state }} {{ item.variable }} {{ item.condition }} {{ item.value }}</label>
       <button v-if="isAdmin" @click="editCondition(item.id)">Edit</button>
-      <button v-if="isAdmin" @click="deleteCondition(item.id)">Delete</button>
+      <button class="button2" v-if="isAdmin" @click="deleteCondition(item.id)">Delete</button>
     </div>
     <button v-if="isAdmin" class="fab-add-condition" @click="goToAddCondition">+</button>
   </div>

@@ -1,7 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-import { auth } from '../firebase'
-
 import Home from '../views/Home.vue'
 import Loginsignup from '../views/Loginsignup.vue'
 import GPS from '../views/GPS.vue'
@@ -60,20 +58,6 @@ import ForgotPassword from '../views/ForgotPassword.vue'
 const router = createRouter({
   history: createWebHashHistory(process.env.BASE_URL),
   routes
-})
-
-router.beforeEach((to, from, next) => {
-  if (to.path === '/login' && auth.currentUser) {
-    next('/')
-    return;
-  }
-
-  if (to.matched.some(record => record.meta.requiresAuth) && !auth.currentUser) {
-    next('/login')
-    return;
-  }
-
-  next();
 })
 
 export default router
