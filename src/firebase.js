@@ -20,7 +20,7 @@ const app = firebase.initializeApp(firebaseConfig);
 const db = app.firestore();
 const variablesCollection = db.collection('Variables');
 const conditionsCollection = db.collection('Conditions');
-
+const adminsCollection = db.collection('admins');
 const auth = firebase.auth(app)
 export { auth }
 /*exports.AddUserRole = functions.auth.user().onCreate(async (authUser) => {
@@ -56,6 +56,19 @@ export const getVariables = async () => {
         variables.push(variable);
     });
     return variables;
+}
+
+export const getAdmins = async () => {
+    const querySnapshot = await adminsCollection.get();
+    const admins = [];
+    querySnapshot.forEach((doc) => {
+        const admin = {
+            id: doc.id,
+            ...doc.data()
+        }
+        admins.push(admin);
+    });
+    return admins;
 }
 
 export const getVariablesFiltered = async (list) => {
