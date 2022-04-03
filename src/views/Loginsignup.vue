@@ -7,7 +7,7 @@
     </div>
 
     <div>
-          <div>
+          <div v-if="isLoggedIn">
 
           <form @submit.prevent="login">
             <h3>Sign In</h3>
@@ -37,13 +37,13 @@
           <button @click="logout">Logout</button>
         </div>
 
-        <div>
+        <div v-if="isLoggedIn">
           <p class="forgot-password text-right mt-2 mb-4">
                 <router-link to="/TheB-Team/forgotpassword">Forgot password ?</router-link>
             </p>
         </div>
 
-        <div>
+        <div v-if="isLoggedIn">
           <p class="forgot-password text-right mt-2 mb-4">
                 <router-link to="/TheB-Team/register">No account? Register here</router-link>
             </p>
