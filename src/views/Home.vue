@@ -5,8 +5,8 @@
     <hr>
     <div align="center">
     <h3>Features:</h3>
-    <div> 
-      <!-- <p>Welcome: {{user.email}}</p> --> 
+    <div v-if="isLoggedIn"> 
+      <p>Welcome: {{user.email}}</p> 
     </div>
     <p>
       GPS -- see your routes <br>
@@ -22,15 +22,18 @@ import firebase from 'firebase';
 export default {
   data() {
     return {
-      user: null
+      user: null,
+      isLoggedIn: false
     };
   },
   created() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.user = user;
+        this.isLoggedIn = true;
       } else {
         this.user = null;
+        this.isLoggedIn = false;
       }
     });
   },
