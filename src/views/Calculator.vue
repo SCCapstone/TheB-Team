@@ -3,7 +3,7 @@
         <hr>
         <h1>Calculator</h1>
         <hr>
-        <p>Enter an address for both points and click submit to get your permit price</p>
+        <p>Enter an address for the beginning and end of your route and click submit to get your permit price</p>
         <h4>Point A</h4>
         <input type="text" v-model="address1" placeholder="Address 1">
         <h4>Point B</h4>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { getRoute, states, getCoord } from '@/utils';
+import { getRoute, getRouteAvoid4L, states, getCoord } from '@/utils';
 import { getConditionsByStates, getVariablesFiltered } from '@/firebase';
 
 export default {
@@ -43,6 +43,7 @@ export default {
             inputs: {},
             permit: 0,
             mileage: {},
+            fourLaneMileage: {},
             showPrice: false
         }
     },
@@ -52,6 +53,7 @@ export default {
     methods: {
         async getVariables() {
             this.showPrice = false;
+            this.permit = 0;
             var response1 = await getCoord(this.address1);
             var response2 = await getCoord(this.address2);
 
@@ -60,14 +62,23 @@ export default {
             this.lat2 = response2.data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
             this.lng2 = response2.data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
             const response = await getRoute(this.lat1, this.lng1, this.lat2, this.lng2);
+            const responseSans4L = await getRouteAvoid4L(this.lat1, this.lng1, this.lat2, this.lng2);
             this.routes = response.data.response.route[0].summaryByCountry;
+            this.routesSans4L = responseSans4L.data.response.route[0].summaryByCountry;
             const routeStates = [];
             this.routes.forEach(route => {
                 this.states.forEach(state => {
                     if (route.country === state.text) {
                         routeStates.push(state.key);
-                        this.mileage[state.key] = route.distance / 0.00062137;
+                        this.mileage[state.key] = route.distance * 0.00062137;
                         this.permit += state.base + state.broker;
+                    }
+                });
+            });
+            this.routesSans4L.forEach(route => {
+                this.states.forEach(state => {
+                    if (route.country === state.text) {
+                        this.fourLaneMileage[state.key] = (route.distance * 0.00062137) - this.mileage[state.key];
                     }
                 });
             });
@@ -99,9 +110,12 @@ export default {
                         this.permit += condition.operand;
                     } else if (condition.operation === 'addPerMile') {
                         this.permit += condition.operand * this.mileage[condition.state];
+                    } else if (condition.operation === 'addPer4LaneMile') {
+                        this.permit += condition.operand * this.fourLaneMileage[condition.state];
                     }
                 }
             });
+            this.permit = this.permit.toFixed(2);
             this.showPrice = true;
         }
     }

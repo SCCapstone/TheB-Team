@@ -23,7 +23,21 @@ const getRoute = async (lat1,lng1,lat2,lng2) => {
     return response;
 }
 
-const getCoord = async (street, city, state) => {
+const getRouteAvoid4L = async (lat1,lng1,lat2,lng2) => {
+    var response = await axios.get("https://route.ls.hereapi.com/routing/7.2/calculateroute.json", {
+        params: {
+            apiKey:"x3u91OpwIPzEJL_v89yy8xy7V1tZxjdB83oA7b3PL70",
+            waypoint0:`${geoStr}${lat1},${lng1}`,
+            waypoint1:`${geoStr}${lat2},${lng2}`, 
+            routeattributes:"wp,sm,sh,sc",
+            mode:"fastest;truck;motorway:-3",
+            metricSystem: "imperial"
+        }
+    });
+    return response;
+}
+
+const getCoord = async (street,city,state) => {
     var response = await axios.get("https://geocoder.ls.hereapi.com/6.2/geocode.json", {
         params: {
             apiKey:"x3u91OpwIPzEJL_v89yy8xy7V1tZxjdB83oA7b3PL70",
@@ -63,6 +77,7 @@ const states = [
 export {
     sortVariables,
     getRoute,
+    getRouteAvoid4L,
     getCoord,
     states
 }
