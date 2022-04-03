@@ -36,5 +36,45 @@ export default {
 #nav a.router-link-exact-active {
   color: #499375;
 }
+hr {
+  height: 5px;
+        background-color: #38a169;
+        border: none;
+}
+button {
+  background-color: #38a169;
+  border: 2px solid black;
+  border-radius: 10px;
+  color: white;
+  padding: 2px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+
+.button2 {
+  background-color: red;
+  border: 2px solid black;
+  border-radius: 10px;
+  color: white;
+  padding: 2px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+
+button:hover {
+  box-shadow: 0 6px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
 </style>
 

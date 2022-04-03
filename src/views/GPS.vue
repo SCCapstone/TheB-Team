@@ -136,16 +136,6 @@ import { getCoord } from '@/utils.js';
   h4{
     color: #4CAF50;
   }
-  button{
-    border-radius: 12%;
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    padding: 2px 4px;
-    cursor: pointer;
-  }
   h2,h3{
     text-shadow: 1px 1px 1px #4CAF50,
                  2px 2px 1px #4CAF50;

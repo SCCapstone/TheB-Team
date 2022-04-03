@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { getRoute, states, getCoord } from '@/utils';
+import { getRoute, getRouteAvoid4L, states, getCoord } from '@/utils';
 import { getConditionsByStates, getVariablesFiltered } from '@/firebase';
 
 export default {
@@ -62,14 +62,23 @@ export default {
             this.lat2 = response2.data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
             this.lng2 = response2.data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
             const response = await getRoute(this.lat1, this.lng1, this.lat2, this.lng2);
+            const responseSans4L = await getRouteAvoid4L(this.lat1, this.lng1, this.lat2, this.lng2);
             this.routes = response.data.response.route[0].summaryByCountry;
+            this.routesSans4L = responseSans4L.data.response.route[0].summaryByCountry;
             const routeStates = [];
             this.routes.forEach(route => {
                 this.states.forEach(state => {
                     if (route.country === state.text) {
                         routeStates.push(state.key);
-                        this.mileage[state.key] = route.distance / 0.00062137;
+                        this.mileage[state.key] = route.distance * 0.00062137;
                         this.permit += state.base + state.broker;
+                    }
+                });
+            });
+            this.routesSans4L.forEach(route => {
+                this.states.forEach(state => {
+                    if (route.country === state.text) {
+                        this.fourLaneMileage[state.key] = (route.distance * 0.00062137) - this.mileage[state.key];
                     }
                 });
             });
@@ -106,8 +115,25 @@ export default {
                     }
                 }
             });
+            this.permit = this.permit.toFixed(2);
             this.showPrice = true;
         }
     }
 }
 </script>
+
+<style scoped>
+h4{
+    color: #4CAF50;
+  }
+  h2,h3{
+    text-shadow: 1px 1px 1px #4CAF50,
+                 2px 2px 1px #4CAF50;
+  }
+  .display{
+      text-align: center;
+  }
+  input{
+    width: 20%;
+  }
+</style>

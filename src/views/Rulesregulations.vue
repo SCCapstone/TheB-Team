@@ -5,16 +5,18 @@
     <hr>
     <div v-for="(item, index) of conditions" :key="index">
       <label>{{ index + 1 }}: {{ item.state }} {{ item.variable }} {{ item.condition }} {{ item.value }}</label>
-      <button @click="editCondition(item.id)">Edit</button>
-      <button @click="deleteCondition(item.id)">Delete</button>
+      <button v-if="isAdmin" @click="editCondition(item.id)">Edit</button>
+      <button v-if="isAdmin" @click="deleteCondition(item.id)">Delete</button>
     </div>
-    <button class="fab-add-condition" @click="goToAddCondition">+</button>
+    <button v-if="isAdmin" class="fab-add-condition" @click="goToAddCondition">+</button>
   </div>
 </template>
 
 <script>
-import { getConditions, deleteCondition } from '@/firebase';
+import { getConditions, deleteCondition, getAdmins } from '@/firebase';
 import router from '@/router';
+import firebase from 'firebase'
+
 export default {
   name: 'RulesRegulations',
   props: {
@@ -22,13 +24,26 @@ export default {
   },
   data () {
     return {
-      conditions: []
+      conditions: [],
+      admins: [],
+      isAdmin: false
     }
   },
   async created () {
     this.conditions = await getConditions();
+    this.admins = await getAdmins();
+    this.checkAdmin();
   },
   methods: {
+    checkAdmin() {
+      var user = firebase.auth().currentUser;
+      var email = user.email;
+      this.isAdmin = this.admins.find(admin => {
+        if (admin.username === email){
+          return true;
+        }
+      });
+    },
     goToAddCondition () {
       router.push({
         name: 'Condition',
@@ -57,11 +72,11 @@ export default {
 
 <style scoped>
   .fab-add-condition {
-  background-color: #F44336;
+  background-color: #2f855a;
   width: 60px;
   height: 60px;
   border-radius: 100%;
-  background: #F44336;
+  background: #2f855a;
   border: none;
   outline: none;
   color: #FFF;

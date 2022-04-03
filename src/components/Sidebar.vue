@@ -1,12 +1,29 @@
 <script>
-import SidebarLink from './SidebarLink'
-import { collapsed, toggleSidebar, sidebarWidth, sidebarWidth2 } from './state'
+import firebase from 'firebase';
+import SidebarLink from './SidebarLink';
+import { collapsed, toggleSidebar, sidebarWidth, sidebarWidth2 } from './state';
 
 export default {
   props: {},
   components: { SidebarLink },
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth, sidebarWidth2 }
+  },
+  data() {
+    return {
+      isLoggedIn: false
+    }
+  },
+  watch: {
+    $route () {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          this.isLoggedIn = true;
+        } else {
+          this.isLoggedIn = false;
+        }
+      });
+    }
   }
 }
 </script>
@@ -20,10 +37,11 @@ export default {
       <span v-else><div align=center>Geofee</div></span>
     </h1>
 
-    <SidebarLink to="/TheB-Team/loginsignup" icon="fas fa-users">Log in/Sign up</SidebarLink>
-    <SidebarLink to="/TheB-Team/gps" icon="fa-solid fa-location-arrow">GPS</SidebarLink>
-    <SidebarLink to="/TheB-Team/calculator" icon="fa-solid fa-calculator">Calculator</SidebarLink>
-    <SidebarLink to="/TheB-Team/rulesregulations" icon="fa-solid fa-truck">Rules/Regulations</SidebarLink>
+    <SidebarLink v-if="!isLoggedIn" to="/TheB-Team/loginsignup" icon="fas fa-users">Log in/Sign up</SidebarLink>
+    <SidebarLink v-if="isLoggedIn" to="/TheB-Team/loginsignup" icon="fas fa-users">Log out</SidebarLink>
+    <SidebarLink v-if="isLoggedIn" to="/TheB-Team/gps" icon="fa-solid fa-location-arrow">GPS</SidebarLink>
+    <SidebarLink v-if="isLoggedIn" to="/TheB-Team/calculator" icon="fa-solid fa-calculator">Calculator</SidebarLink>
+    <SidebarLink v-if="isLoggedIn" to="/TheB-Team/rulesregulations" icon="fa-solid fa-truck">Rules/Regulations</SidebarLink>
 
     <span
       class="collapse-icon"

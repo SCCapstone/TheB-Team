@@ -1,6 +1,7 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
 
+import 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB_bRrdaCJeLBH9F8qRqP9FsSx1XmrseN0",
@@ -17,6 +18,9 @@ const app = firebase.initializeApp(firebaseConfig);
 const db = app.firestore();
 const variablesCollection = db.collection('Variables');
 const conditionsCollection = db.collection('Conditions');
+const adminsCollection = db.collection('admins');
+const auth = firebase.auth(app)
+export { auth }
 
 export const getVariables = async () => {
     const querySnapshot = await variablesCollection.get();
@@ -29,6 +33,19 @@ export const getVariables = async () => {
         variables.push(variable);
     });
     return variables;
+}
+
+export const getAdmins = async () => {
+    const querySnapshot = await adminsCollection.get();
+    const admins = [];
+    querySnapshot.forEach((doc) => {
+        const admin = {
+            id: doc.id,
+            ...doc.data()
+        }
+        admins.push(admin);
+    });
+    return admins;
 }
 
 export const getVariablesFiltered = async (list) => {
