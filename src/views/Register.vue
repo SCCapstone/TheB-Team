@@ -42,7 +42,7 @@ export default {
                 .createUserWithEmailAndPassword(this.user.email, this.user.password)
                 .then(() => {
                     alert('Successfully registered! Please login.');
-                    this.$router.push('/TheB-Team/loginsigngup');
+                    this.$router.push('/TheB-Team/loginsignup');
                 })
                 .catch(error => {
                     alert(error.message);

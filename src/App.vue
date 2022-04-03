@@ -36,5 +36,29 @@ export default {
 #nav a.router-link-exact-active {
   color: #499375;
 }
+hr {
+  height: 5px;
+        background-color: #38a169;
+        border: none;
+}
+button {
+  background-color: #38a169;
+  border: 2px solid black;
+  border-radius: 8px;
+  color: white;
+  padding: 2px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 2px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
 </style>
 
