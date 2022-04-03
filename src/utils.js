@@ -37,11 +37,11 @@ const getRouteAvoid4L = async (lat1,lng1,lat2,lng2) => {
     return response;
 }
 
-const getCoord = async (address) => {
+const getCoord = async (street,city,state) => {
     var response = await axios.get("https://geocoder.ls.hereapi.com/6.2/geocode.json", {
         params: {
             apiKey:"x3u91OpwIPzEJL_v89yy8xy7V1tZxjdB83oA7b3PL70",
-            searchtext:`${address}`
+            searchtext:`${street},${city},${state}`
         }
     });
     return response;
