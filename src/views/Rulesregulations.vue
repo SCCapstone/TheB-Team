@@ -5,17 +5,17 @@
     <hr>
     <div v-for="(item, index) of conditions" :key="index">
       <label>{{ index + 1 }}: {{ item.state }} {{ item.variable }} {{ item.condition }} {{ item.value }}</label>
-      <button @click="editCondition(item.id)">Edit</button>
-      <button @click="deleteCondition(item.id)">Delete</button>
+      <button v-if="isAdmin" @click="editCondition(item.id)">Edit</button>
+      <button v-if="isAdmin" @click="deleteCondition(item.id)">Delete</button>
     </div>
-    <button class="fab-add-condition" @click="goToAddCondition">+</button>
+    <button v-if="isAdmin" class="fab-add-condition" @click="goToAddCondition">+</button>
   </div>
 </template>
 
 <script>
-import { getConditions, deleteCondition } from '@/firebase';
+import { getConditions, deleteCondition, getAdmins } from '@/firebase';
 import router from '@/router';
-//import firebase from 'firebase'
+import firebase from 'firebase'
 
 export default {
   name: 'RulesRegulations',
@@ -25,51 +25,25 @@ export default {
   data () {
     return {
       conditions: [],
-      /*user: {
-        email: ''
-      }*/
+      admins: [],
+      isAdmin: false
     }
   },
-  
-  /*beforeCreate(){
-    var self = this;
-        firebase.auth().onAuthStateChanged(function(user) {
-            self.user = user;
-        });
-
-        this.users = [];
-        firebase
-            .firestore()
-            .collection("roles")
-            .get()
-            .then(snap => {
-                snap.forEach(doc => {
-                    var user = doc.data();
-                    user.id = doc.id;
-                    console.log(doc.data());
-                    if (!user.role.admin) this.users.push(user);
-                });
-            });
-    /*firebase.auth().getUserByEmail('admin@admin.com')
-      .then((user) => {
-     //Confirm user is verified.
-    if (user.emailVerified) {
-      // Add custom claims for additional privileges.
-      // This will be picked up by the user on token refresh or next sign in on new device.
-      return getAuth().setCustomUserClaims(user.uid, {
-        admin: true,
-      });
-      return this.user.email;
-    }
-  })
-  .catch((error) => {
-    console.log(error);
-  });*/
-  //},
   async created () {
     this.conditions = await getConditions();
+    this.admins = await getAdmins();
+    this.checkAdmin();
   },
   methods: {
+    checkAdmin() {
+      var user = firebase.auth().currentUser;
+      var email = user.email;
+      this.isAdmin = this.admins.find(admin => {
+        if (admin.username === email){
+          return true;
+        }
+      });
+    },
     goToAddCondition () {
       router.push({
         name: 'Condition',
