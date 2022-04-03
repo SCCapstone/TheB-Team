@@ -3,11 +3,15 @@
         <hr>
         <h1>Calculator</h1>
         <hr>
-        <p>Enter an address for the beginning and end of your route and click submit to get your permit price</p>
+        <p>Enter a street, city, and state for both Point A and Point B (Note: No route will be displayed if a route for your coordinates does not exist)</p>
         <h4>Point A</h4>
-        <input type="text" v-model="address1" placeholder="Address 1">
+        <input type="text" v-model="street1" placeholder="Street">
+        <input type="text" v-model="city1" placeholder="City">
+        <input type="text" v-model="state1" placeholder="State">
         <h4>Point B</h4>
-        <input type="text" v-model="address2" placeholder="Address 2">
+        <input type="text" v-model="street2" placeholder="Street">
+        <input type="text" v-model="city2" placeholder="City">
+        <input type="text" v-model="state2" placeholder="State">
         <button @click="getVariables()">Start Calculation</button>
         <div v-for="(variable, index) in variables" :key="index">
             <label>{{ variable.name }}: </label>
@@ -30,8 +34,12 @@ export default {
     name: 'calculatorView',
     data() {
         return {
-            address1: "",
-            address2: "",
+            street1: "",
+            street2: "",
+            city1: "",
+            city2: "",
+            state1: "",
+            state2: "",
             lat1: 0,
             lng1: 0,
             lat2: 0,
@@ -54,8 +62,8 @@ export default {
         async getVariables() {
             this.showPrice = false;
             this.permit = 0;
-            var response1 = await getCoord(this.address1);
-            var response2 = await getCoord(this.address2);
+            var response1 = await getCoord(this.street1,this.city1,this.state1);
+            var response2 = await getCoord(this.street2,this.city2,this.state2);
 
             this.lat1 = response1.data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
             this.lng1 = response1.data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
