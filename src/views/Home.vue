@@ -11,8 +11,9 @@
     <p>
       GPS -- see your routes <br>
       Calculator -- calculate the costs/fee totals for your routes<br>
-      Rules/Regulations List -- see what laws/guidlines are required for each of your trucks
+      Rules/Regulations List -- see what laws/guidlines are required for each of your trucks<br>
     </p>
+    <h4>***** You must log in to see these features *****</h4>
     </div>
   </div>
 </template>
