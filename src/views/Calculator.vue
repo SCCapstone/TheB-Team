@@ -3,7 +3,7 @@
         <hr>
         <h1>Calculator</h1>
         <hr>
-        <p>Enter a street, city, and state for both Point A and Point B (Note: No route will be displayed if a route for your coordinates does not exist)</p>
+        <p>Enter a street, city, and state for both Point A and Point B to start calculations</p>
         <h4>Point A</h4>
         <input type="text" v-model="street1" placeholder="Street">
         <input type="text" v-model="city1" placeholder="City">
