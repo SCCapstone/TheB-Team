@@ -92,6 +92,7 @@ export default {
             this.variables = await getVariablesFiltered(variableQuery);
         },
         calculate () {
+            this.permit = 0;
             this.conditions.forEach(condition => {
                 var ifTrue = false;
                 if (condition.condition === 'less-than') {
