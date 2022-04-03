@@ -15,6 +15,8 @@
 <script>
 import { getConditions, deleteCondition } from '@/firebase';
 import router from '@/router';
+//import firebase from 'firebase'
+
 export default {
   name: 'RulesRegulations',
   props: {
@@ -22,9 +24,48 @@ export default {
   },
   data () {
     return {
-      conditions: []
+      conditions: [],
+      /*user: {
+        email: ''
+      }*/
     }
   },
+  
+  /*beforeCreate(){
+    var self = this;
+        firebase.auth().onAuthStateChanged(function(user) {
+            self.user = user;
+        });
+
+        this.users = [];
+        firebase
+            .firestore()
+            .collection("roles")
+            .get()
+            .then(snap => {
+                snap.forEach(doc => {
+                    var user = doc.data();
+                    user.id = doc.id;
+                    console.log(doc.data());
+                    if (!user.role.admin) this.users.push(user);
+                });
+            });
+    /*firebase.auth().getUserByEmail('admin@admin.com')
+      .then((user) => {
+     //Confirm user is verified.
+    if (user.emailVerified) {
+      // Add custom claims for additional privileges.
+      // This will be picked up by the user on token refresh or next sign in on new device.
+      return getAuth().setCustomUserClaims(user.uid, {
+        admin: true,
+      });
+      return this.user.email;
+    }
+  })
+  .catch((error) => {
+    console.log(error);
+  });*/
+  //},
   async created () {
     this.conditions = await getConditions();
   },
