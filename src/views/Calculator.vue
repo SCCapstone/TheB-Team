@@ -49,6 +49,7 @@ export default {
             conditions: [],
             variables: [],
             inputs: {},
+            basePermit: 0,
             permit: 0,
             mileage: {},
             fourLaneMileage: {},
@@ -61,7 +62,8 @@ export default {
     methods: {
         async getVariables() {
             this.showPrice = false;
-            this.permit = 0;
+            this.variables = [];
+            this.basePermit = 0;
             var response1 = await getCoord(this.street1,this.city1,this.state1);
             var response2 = await getCoord(this.street2,this.city2,this.state2);
 
@@ -79,7 +81,7 @@ export default {
                     if (route.country === state.text) {
                         routeStates.push(state.key);
                         this.mileage[state.key] = route.distance * 0.00062137;
-                        this.permit += state.base + state.broker;
+                        this.basePermit += state.base + state.broker;
                     }
                 });
             });
@@ -87,6 +89,9 @@ export default {
                 this.states.forEach(state => {
                     if (route.country === state.text) {
                         this.fourLaneMileage[state.key] = (route.distance * 0.00062137) - this.mileage[state.key];
+                        if(this.fourLaneMileage[state.key] < 0) {
+                            this.fourLaneMileage[state.key] = 0;
+                        }
                     }
                 });
             });
@@ -100,7 +105,7 @@ export default {
             this.variables = await getVariablesFiltered(variableQuery);
         },
         calculate () {
-            this.permit = 0;
+            this.permit = this.basePermit;
             this.conditions.forEach(condition => {
                 var ifTrue = false;
                 if (condition.condition === 'less-than') {
