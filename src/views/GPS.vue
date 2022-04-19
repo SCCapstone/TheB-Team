@@ -12,13 +12,12 @@
     <input type="text" v-model="street2" placeholder="Street">
     <input type="text" v-model="city2" placeholder="City">
     <input type="text" v-model="state2" placeholder="State">
-    <button @click="generateMap(street1, street2, city1, city2, state1, state2); showDiv();">Submit</button>
+    <button @click="generateMap(street1, street2, city1, city2, state1, state2); showDiv(); showDirections();">Submit</button>
   </div>
   <div id="mapContainer" style="height:600px;width:100%" ref="hereMap"></div>
   <div class="display" id="displayDiv" style="display:none;"> 
     <h2>Miles and times followed by their respective states</h2>
     <div v-for="(route,index) in routes" v-html="route.text" :key="index"></div>
-    <button @click="showDirections();">Directions</button>
   </div>
   <div id="directionsDiv" style="display:none;">
     <h3>Directions</h3>
@@ -50,70 +49,71 @@ import { getCoord } from '@/utils.js';
         lat2: 0,
         lng2: 0,
         isMap: false,
+        show: false,
         w: null
       }
     },
     methods: {
       //METHOD: generate a map using the Here mapping api and routing api to populate map with a route
       async generateMap(street1, street2, city1, city2, state1, state2) {
-        this.resetMap("mapContainer");
-        this.isMap = true;
-        const mapContainer = this.$refs.hereMap;
-        const H = window.H;
-        const platform = new window.H.service.Platform({
-          apikey: "x3u91OpwIPzEJL_v89yy8xy7V1tZxjdB83oA7b3PL70"
-        });
-        this.platform = platform;
-        this.routingService = this.platform.getRoutingService();
-        //THIS IS FOR THE MAP
-        // Obtain the default map types from the platform object
-        var maptypes = this.platform.createDefaultLayers();
-        // Instantiate (and display) a map object:
-        const map = new H.Map(mapContainer, maptypes.vector.normal.map, {
-            zoom: 10,
-        });
-        // add behavior control
-        new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
-        // add UI
-        H.ui.UI.createDefault(map, maptypes);
-        // End rendering the initial map
-        //THIS IS FOR THE ROUTING API & GEOCODING API
         var response1 = await getCoord(street1,city1,state1);
         var response2 = await getCoord(street2,city2,state2);
-        console.log(response1.data)
 
-        this.lat1 = response1.data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
-        this.lng1 = response1.data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
-        this.lat2 = response2.data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
-        this.lng2 = response2.data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
-        console.log(this.lat1);
-        console.log(this.lng1);
-        console.log(this.lat2);
-        console.log(this.lng2);
-
-        var response3 = await getRoute(this.lat1,this.lng1,this.lat2,this.lng2);
-        console.log(response3);
-        this.routes = response3.data.response.route[0].summaryByCountry
-        this.directions = response3.data.response.route[0].leg[0].maneuver
-        console.log(this.routes);
-        console.log(this.directions);
-        this.routes.forEach((route) => {
-            route.text += route.country
-        });
-        this.points = response3.data.response.route[0].shape;
-        var linestring = new H.geo.LineString();
-        this.points.forEach(function(point){
-            let [lat, lng] = point.split(",");
-            linestring.pushPoint({ lat: lat, lng:lng});
-        });
-        var polyline = new H.map.Polyline(linestring, { style: { lineWidth: 5 }});
-        
-        map.addObject(polyline);
-        map.getViewModel().setLookAtData({bounds: polyline.getBoundingBox()});
+        if(response1.data.Response.View[0] != undefined && response2.data.Response.View[0] != undefined) {
+          this.resetMap("mapContainer");
+          this.isMap = true;
+          const mapContainer = this.$refs.hereMap;
+          const H = window.H;
+          const platform = new window.H.service.Platform({
+            apikey: "x3u91OpwIPzEJL_v89yy8xy7V1tZxjdB83oA7b3PL70"
+          });
+          this.platform = platform;
+          this.routingService = this.platform.getRoutingService();
+          //THIS IS FOR THE MAP
+          // Obtain the default map types from the platform object
+          var maptypes = this.platform.createDefaultLayers();
+          // Instantiate (and display) a map object:
+          const map = new H.Map(mapContainer, maptypes.vector.normal.map, {
+              zoom: 10,
+          });
+          // add behavior control
+          new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+          // add UI
+          H.ui.UI.createDefault(map, maptypes);
+          // End rendering the initial map
+          //THIS IS FOR THE ROUTING API & GEOCODING API
+          this.lat1 = response1.data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
+          this.lng1 = response1.data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
+          this.lat2 = response2.data.Response.View[0].Result[0].Location.DisplayPosition.Latitude
+          this.lng2 = response2.data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
+          var response3 = await getRoute(this.lat1,this.lng1,this.lat2,this.lng2);
+          this.routes = response3.data.response.route[0].summaryByCountry
+          this.directions = response3.data.response.route[0].leg[0].maneuver
+          this.routes.forEach((route) => {
+              route.text += route.country
+          });
+          this.points = response3.data.response.route[0].shape;
+          var linestring = new H.geo.LineString();
+          this.points.forEach(function(point){
+              let [lat, lng] = point.split(",");
+              linestring.pushPoint({ lat: lat, lng:lng});
+          });
+          var polyline = new H.map.Polyline(linestring, { style: { lineWidth: 5 }});
+          
+          map.addObject(polyline);
+          map.getViewModel().setLookAtData({bounds: polyline.getBoundingBox()});
+        }
+        else {
+          document.getElementById('mapContainer').innerHTML="NO ROUTE EXISTS";
+          this.isMap = true;
+          document.getElementById("displayDiv").style.display = "none";
+          document.getElementById("directionsDiv").style.display = "none";
+          document.getElementById("printButton").style.display = "none";
+        }
       },
       resetMap(elementID) {
         if (this.isMap == true) {
-          document.getElementById(elementID). innerHTML = "";
+          document.getElementById(elementID).innerHTML = "";
         }
       },
       showDiv() {
@@ -148,9 +148,6 @@ import { getCoord } from '@/utils.js';
   h2,h3{
     text-shadow: 1px 1px 1px #4CAF50,
                  2px 2px 1px #4CAF50;
-  }
-  .display{
-      text-align: center;
   }
   input{
     width: 20%;
