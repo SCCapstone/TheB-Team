@@ -29,15 +29,15 @@
       <h3>How to use Geofee:</h3>
       <p>
         * Use the side bar to the left to navigate through the features<br>
-        <img src="../assets/PointToLeft.png" height="400px" /><br><br>
+        <img src="@/assets/PointToLeft.png" height="400px" /><br><br>
         * Log in to see avaible features (GPS, Calculator, and Rules/Regulations List<br>
-        <img src="../assets/LoginSignup.png" height="300px" /><br><br>
+        <img src="@/assets/LoginSignup.png" height="300px" /><br><br>
         * Input your start and stop locations into the GPS to get your route<br>
-        <img src="../assets/gps.png" height="300px" /><br><br>
+        <img src="@/assets/gps.png" height="300px" /><br><br>
         * Input your start and stop locations as well as the length and width of your truck to get the total cost of fees for your route<br>
-        <img src="../assets/calculator.png" height="300px" /><br><br>
+        <img src="@/assets/calculator.png" height="300px" /><br><br>
         * View rules and regulations nation wide with the Rules/Regulations List (Administrative accounts are able to edit the list)<br>
-        <img src="../assets/RulesReg.png" height="300px" /><br>
+        <img src="@/assets/RulesReg.png" height="300px" /><br>
       </p>
     </div>
   </div>
