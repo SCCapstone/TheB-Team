@@ -39,6 +39,7 @@ export default {
 
     <SidebarLink v-if="!isLoggedIn" to="/TheB-Team/loginsignup" icon="fas fa-users">Log in/Sign up</SidebarLink>
     <SidebarLink v-if="isLoggedIn" to="/TheB-Team/loginsignup" icon="fas fa-users">Log out</SidebarLink>
+    <SidebarLink v-if="isLoggedIn" to="/TheB-Team/about" icon="fa-solid fa-file-lines">About</SidebarLink>
     <SidebarLink v-if="isLoggedIn" to="/TheB-Team/gps" icon="fa-solid fa-location-arrow">GPS</SidebarLink>
     <SidebarLink v-if="isLoggedIn" to="/TheB-Team/calculator" icon="fa-solid fa-calculator">Calculator</SidebarLink>
     <SidebarLink v-if="isLoggedIn" to="/TheB-Team/rulesregulations" icon="fa-solid fa-truck">Rules/Regulations</SidebarLink>

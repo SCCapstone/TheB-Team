@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 import Home from '../views/Home.vue'
 import Loginsignup from '../views/Loginsignup.vue'
+import About from '../views/About.vue'
 import GPS from '../views/GPS.vue'
 import Calculator from '../views/Calculator.vue'
 import Rulesregulations from '../views/Rulesregulations.vue'
@@ -19,6 +20,11 @@ import ForgotPassword from '../views/ForgotPassword.vue'
     path: '/TheB-Team/loginsignup',
     name: 'Loginsignup',
     component: Loginsignup,
+  },
+  {
+    path: '/TheB-Team/about',
+    name: 'About',
+    component: About,
   },
   {
     path: '/TheB-Team/gps',
