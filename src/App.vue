@@ -7,6 +7,7 @@ export default {
     return { sidebarWidth2 }
   }
 }
+
 </script>
 <template>
   <Sidebar />
