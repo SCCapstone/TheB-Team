@@ -4,16 +4,19 @@
     <h1>Welcome</h1>
     <hr>
     <div align="center">
-    <div v-if="isLoggedIn"> 
-      <p>Welcome: {{user.email}}</p> 
-    </div>
-    <h3>Features:</h3>
-    <p>
-      GPS -- see your routes <br>
-      Calculator -- calculate the costs/fee totals for your routes<br>
-      Rules/Regulations List -- see what laws/guidlines are required for each of your trucks<br>
-    </p>
-    <h4>***** You must log in to see these features *****</h4>
+      <div v-if="isLoggedIn"> 
+        <p>Welcome: {{user.email}}</p> 
+      </div>
+      <h3>Features:</h3>
+      <p>
+        GPS -- see your routes <br>
+        Calculator -- calculate the costs/fee totals for your routes<br>
+        Rules/Regulations List -- see what laws/guidlines are required for each of your trucks<br>
+      </p>
+      <h4>***** You must log in to see these features *****</h4>
+      <div>
+        <video-embed src="https://youtu.be/zR0bBWwRF4I"></video-embed>
+      </div>
     </div>
   </div>
 </template>
