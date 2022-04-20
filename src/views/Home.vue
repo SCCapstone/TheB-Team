@@ -29,15 +29,15 @@
       <h3>How to use Geofee:</h3>
       <p>
         * Use the side bar to the left to navigate through the features<br>
-        <img src="https://sccapstone.github.io/TheB-Team/images/PointToLeft.png" height="400px"><br><br>
+        <img src="/images/PointToLeft.png" height="400px"><br><br>
         * Log in to see avaible features (GPS, Calculator, and Rules/Regulations List<br>
-        <img src="https://sccapstone.github.io/TheB-Team/images/LoginSignup.png" height="300px"><br><br>
+        <img src="/images/LoginSignup.png" height="300px"><br><br>
         * Input your start and stop locations into the GPS to get your route<br>
-        <img src="https://sccapstone.github.io/TheB-Team/images/gps.png" height="300px"><br><br>
+        <img src="/images/gps.png" height="300px"><br><br>
         * Input your start and stop locations as well as the length and width of your truck to get the total cost of fees for your route<br>
-        <img src="https://sccapstone.github.io/TheB-Team/images/calculator.png" height="300px"><br><br>
+        <img src="/images/calculator.png" height="300px"><br><br>
         * View rules and regulations nation wide with the Rules/Regulations List (Administrative accounts are able to edit the list)<br>
-        <img src="https://sccapstone.github.io/TheB-Team/images/RulesReg.png" height="300px"><br>
+        <img src="/images/RulesReg.png" height="300px"><br>
       </p>
     </div>
   </div>
