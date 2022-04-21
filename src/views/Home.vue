@@ -33,7 +33,7 @@
       <h3>How to use Geofee:</h3>
       <p>
         * Use the side bar to the left to navigate through the features<br>
-        <img src="/TheB-Team/images/NewPointToLeft.png" height="400px"><br><br>
+        <img src="/TheB-Team/images/PointToLeft.png" height="400px"><br><br>
         * Log in to see avaible features (GPS, Calculator, and Rules/Regulations List)<br>
         <img src="/TheB-Team/images/LoginSignup.png" height="300px"><br><br>
         * Input your start and stop locations into the GPS to get your route<br>
