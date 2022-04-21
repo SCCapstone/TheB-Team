@@ -18,10 +18,12 @@
         <br>PoC Demo video as placeholder<br>
         <i class="fa-solid fa-angles-down" />
       </p>
-      <iframe width="560" height="315" 
-      src="https://www.youtube.com/embed/zR0bBWwRF4I" title="YouTube video player" frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen></iframe>
+      <section>
+        <iframe width="560" height="315" 
+        src="https://www.youtube.com/embed/zR0bBWwRF4I" title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen></iframe>
+      </section>
       <h3>Why use Geofee:</h3>
       <p>
         * To see and get the directions of your trucking route<br>
