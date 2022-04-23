@@ -1,0 +1,516 @@
+{
+  "id": "0c0218e0-c59e-4196-a9f7-fc1f34c8612b",
+  "version": "2.0",
+  "name": "sign up",
+  "url": "https://sccapstone.github.io/TheB-Team/",
+  "tests": [{
+    "id": "4d4e3104-7607-425e-95cf-4a6cb9f301b4",
+    "name": "signup",
+    "commands": [{
+      "id": "53f414f2-7fde-4ce0-9e12-a95a3ff28e73",
+      "comment": "",
+      "command": "open",
+      "target": "https://sccapstone.github.io/TheB-Team/#/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ab5f32fa-9694-4ccb-9f9a-8053f47dc149",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1616x886",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "acb83837-530a-42f7-b747-0077d202d532",
+      "comment": "",
+      "command": "click",
+      "target": "css=span:nth-child(2)",
+      "targets": [
+        ["css=span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='app']/div/a/span", "xpath:idRelative"],
+        ["xpath=//a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Log in/Sign up')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "09f05917-2ebe-47d1-8289-0d90b0b3b3b4",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(3) .link",
+      "targets": [
+        ["css=div:nth-child(3) .link", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/div[2]/div[3]/p/span", "xpath:idRelative"],
+        ["xpath=//div[3]/p/span", "xpath:position"],
+        ["xpath=//span[contains(.,'No account? Register here')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f61d40c9-ca62-422d-aa2e-ba0bba5b70c8",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(2)",
+      "targets": [
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "85a4ab7c-93f6-4c9d-97bc-e0ec4c2df7e0",
+      "comment": "",
+      "command": "type",
+      "target": "css=input:nth-child(2)",
+      "targets": [
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "behavioraltest@gmail.com"
+    }, {
+      "id": "e99e0ae3-a159-4705-867d-55d0e80d655e",
+      "comment": "",
+      "command": "type",
+      "target": "css=input:nth-child(5)",
+      "targets": [
+        ["css=input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@type='password']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "Behave@1"
+    }, {
+      "id": "2743091a-3262-4aa1-a6a2-06a93dc99e8c",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/div/form/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Register')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "8154ecd2-8372-4fcd-960e-b9932044a878",
+    "name": "login",
+    "commands": [{
+      "id": "498a00ee-be26-4743-8f40-aea58a4f8e91",
+      "comment": "",
+      "command": "open",
+      "target": "https://sccapstone.github.io/TheB-Team/#/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3f604ebe-0110-47a4-adcc-ab3b5eacfc72",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1616x886",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c6393364-8eeb-4b14-85b1-bbca091ad6e9",
+      "comment": "",
+      "command": "click",
+      "target": "css=span:nth-child(2)",
+      "targets": [
+        ["css=span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='app']/div/a/span", "xpath:idRelative"],
+        ["xpath=//a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Log in/Sign up')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e398afc9-93c2-4486-a0f1-a30e9d2310c8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-group:nth-child(2) > .form-control",
+      "targets": [
+        ["css=.form-group:nth-child(2) > .form-control", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/div[2]/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ee51f6fc-e445-41e2-97fa-0b94d6622190",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-group:nth-child(2) > .form-control",
+      "targets": [
+        ["css=.form-group:nth-child(2) > .form-control", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/div[2]/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "behavioraltest@gmail.com"
+    }, {
+      "id": "696bef57-91db-4e94-aa76-e551649348b0",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-group:nth-child(3) > .form-control",
+      "targets": [
+        ["css=.form-group:nth-child(3) > .form-control", "css:finder"],
+        ["xpath=//input[@type='password']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div[2]/div/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Behave@1"
+    }, {
+      "id": "7e75dded-b1d3-48d0-95c6-c4f3d21efa80",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div[2]/div/form/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Sign In')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "88141feb-a7b8-447d-a15b-30b2b4622218",
+    "name": "menu",
+    "commands": [{
+      "id": "fcdf14fc-bb05-496f-be75-53ce6117ac46",
+      "comment": "",
+      "command": "open",
+      "target": "https://sccapstone.github.io/TheB-Team/#/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ea32b71a-cbc9-4c0c-9c00-1c068fd4cb65",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1600x870",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ed33062b-93ee-4efe-b2d0-05a6e9e8e1ee",
+      "comment": "",
+      "command": "click",
+      "target": "css=span:nth-child(2)",
+      "targets": [
+        ["css=span:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='app']/div/a/span", "xpath:idRelative"],
+        ["xpath=//a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Log in/Sign up')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a1ec9f2c-c3b9-4220-946e-211af891961f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-group:nth-child(2) > .form-control",
+      "targets": [
+        ["css=.form-group:nth-child(2) > .form-control", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/div[2]/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "71e156b1-cb71-4634-9ad6-8799431be0b5",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-group:nth-child(2) > .form-control",
+      "targets": [
+        ["css=.form-group:nth-child(2) > .form-control", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/div[2]/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "behavioraltest@gmail.com"
+    }, {
+      "id": "50895f28-cfc8-4e6c-8b97-d7cd36169ea3",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-group:nth-child(3) > .form-control",
+      "targets": [
+        ["css=.form-group:nth-child(3) > .form-control", "css:finder"],
+        ["xpath=//input[@type='password']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div[2]/div/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Behave@1"
+    }, {
+      "id": "6ddc1366-cca4-43aa-aa9f-80d850f15a30",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div[2]/div/form/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Sign In')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5c42989c-71fc-461d-b3c7-fc6202d6d113",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div[2]/div/form/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Sign In')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3cf45cf9-c61e-4814-8ac0-a4c41d0a4c03",
+      "comment": "",
+      "command": "click",
+      "target": "css=.link:nth-child(3) > span",
+      "targets": [
+        ["css=.link:nth-child(3) > span", "css:finder"],
+        ["xpath=//div[@id='app']/div/a[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'About')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dff285c5-7209-4834-8cce-76d258eb8d94",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=GPS",
+      "targets": [
+        ["linkText=GPS", "linkText"],
+        ["css=.link:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='app']/div/a[3]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '#/TheB-Team/gps')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'GPS')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e570c0c5-5b60-4440-b4ab-bfcf0bc05740",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=GPS",
+      "targets": [
+        ["linkText=GPS", "linkText"],
+        ["css=.link:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='app']/div/a[3]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '#/TheB-Team/gps')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'GPS')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "25477c74-17cd-4ffe-9d77-0cac4ea0e9f6",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "linkText=GPS",
+      "targets": [
+        ["linkText=GPS", "linkText"],
+        ["css=.router-link-active", "css:finder"],
+        ["xpath=//div[@id='app']/div/a[3]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '#/TheB-Team/gps')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'GPS')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "eade3874-d81e-4513-8a76-358d4fe27b2e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.link:nth-child(5) > span",
+      "targets": [
+        ["css=.link:nth-child(5) > span", "css:finder"],
+        ["xpath=//div[@id='app']/div/a[4]/span", "xpath:idRelative"],
+        ["xpath=//a[4]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Calculator')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "61698abd-a2e5-4854-9dce-fa2d93f0861d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.link:nth-child(6) > span",
+      "targets": [
+        ["css=.link:nth-child(6) > span", "css:finder"],
+        ["xpath=//div[@id='app']/div/a[5]/span", "xpath:idRelative"],
+        ["xpath=//a[5]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Rules/Regulations')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "12c950d4-08cb-4dc2-80da-935a7ed85446",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Log out",
+      "targets": [
+        ["linkText=Log out", "linkText"],
+        ["css=.link:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='app']/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '#/TheB-Team/loginsignup')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b3d28d93-2ea1-4a0c-ba0f-dc7fe14fd6fb",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.router-link-active > span",
+      "targets": [
+        ["css=.router-link-active > span", "css:finder"],
+        ["xpath=//div[@id='app']/div/a/span", "xpath:idRelative"],
+        ["xpath=//a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Log in/Sign up')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9c5dae50-d473-429e-bbf1-caf65dd4868b",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.router-link-active > span",
+      "targets": [
+        ["css=.router-link-active > span", "css:finder"],
+        ["xpath=//div[@id='app']/div/a/span", "xpath:idRelative"],
+        ["xpath=//a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Log in/Sign up')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "608ccc96-0451-4cc0-91c5-62798328aa6d",
+    "name": "gps",
+    "commands": [{
+      "id": "e8fb38e0-95a7-4a7a-8e81-8d16ebad54f3",
+      "comment": "",
+      "command": "open",
+      "target": "https://sccapstone.github.io/TheB-Team/#/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "403750c4-b117-4c8d-a02e-43b404387bf3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1616x886",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f27878da-54d3-4bcf-8838-2bb4823d1401",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=GPS",
+      "targets": [
+        ["linkText=GPS", "linkText"],
+        ["css=.link:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='app']/div/a[3]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '#/TheB-Team/gps')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'GPS')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2ee5c80c-23e9-4ccb-92c4-f703014faaa1",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(6)",
+      "targets": [
+        ["css=input:nth-child(6)", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7c07b67b-0c06-4f78-a6c5-c04bc0225b58",
+      "comment": "",
+      "command": "type",
+      "target": "css=input:nth-child(6)",
+      "targets": [
+        ["css=input:nth-child(6)", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "3005 Bledsoe St."
+    }, {
+      "id": "77858373-c3cd-47ff-a9bc-225e56f776ec",
+      "comment": "",
+      "command": "type",
+      "target": "css=input:nth-child(7)",
+      "targets": [
+        ["css=input:nth-child(7)", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "Fort Worth"
+    }, {
+      "id": "841c47cd-0208-4a23-91bf-4e384bfdcc2a",
+      "comment": "",
+      "command": "type",
+      "target": "css=input:nth-child(8)",
+      "targets": [
+        ["css=input:nth-child(8)", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "TX"
+    }, {
+      "id": "0435eb99-192d-4b21-af2b-ad6ad35e6b28",
+      "comment": "",
+      "command": "type",
+      "target": "css=input:nth-child(10)",
+      "targets": [
+        ["css=input:nth-child(10)", "css:finder"],
+        ["xpath=(//input[@type='text'])[4]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": "550 Assembly St."
+    }, {
+      "id": "78f45cca-d2f6-4064-a8c8-c62ee5da5009",
+      "comment": "",
+      "command": "type",
+      "target": "css=input:nth-child(11)",
+      "targets": [
+        ["css=input:nth-child(11)", "css:finder"],
+        ["xpath=(//input[@type='text'])[5]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/input[5]", "xpath:idRelative"],
+        ["xpath=//input[5]", "xpath:position"]
+      ],
+      "value": "Columbia"
+    }, {
+      "id": "51967952-b379-4406-b243-474db4b3bc0d",
+      "comment": "",
+      "command": "type",
+      "target": "css=input:nth-child(12)",
+      "targets": [
+        ["css=input:nth-child(12)", "css:finder"],
+        ["xpath=(//input[@type='text'])[6]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/input[6]", "xpath:idRelative"],
+        ["xpath=//input[6]", "xpath:position"]
+      ],
+      "value": "SC"
+    }, {
+      "id": "6fac4f2b-2f03-4d8e-bc41-4a954bcc7bc0",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(13)",
+      "targets": [
+        ["css=button:nth-child(13)", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "555a3dc8-7231-4c5c-a194-90830f51133f",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://sccapstone.github.io/", "https://sccapstone.github.io/TheB-Team/"],
+  "plugins": []
+}
