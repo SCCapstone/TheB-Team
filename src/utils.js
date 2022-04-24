@@ -4,12 +4,12 @@ import axios from 'axios'
 
 const geoStr = 'geo!';
 
-const sortVariables = (variables) => {
+function sortVariables(variables) {
     variables.sort((a, b) => (a.name > b.name) ? 1 : -1);
     return variables
 }
 
-const getRoute = async (lat1,lng1,lat2,lng2) => {
+async function getRoute(lat1,lng1,lat2,lng2) {
     var response = await axios.get("https://route.ls.hereapi.com/routing/7.2/calculateroute.json", {
         params: {
             apiKey:"x3u91OpwIPzEJL_v89yy8xy7V1tZxjdB83oA7b3PL70",
@@ -37,7 +37,7 @@ const getRouteAvoid4L = async (lat1,lng1,lat2,lng2) => {
     return response;
 }
 
-const getCoord = async (street,city,state) => {
+async function getCoord(street,city,state) {
     var response = await axios.get("https://geocoder.ls.hereapi.com/6.2/geocode.json", {
         params: {
             apiKey:"x3u91OpwIPzEJL_v89yy8xy7V1tZxjdB83oA7b3PL70",
@@ -46,6 +46,7 @@ const getCoord = async (street,city,state) => {
     });
     return response;
 }
+
 
 const states = [
     {
@@ -73,6 +74,7 @@ const states = [
         broker: 15
     }
 ];
+
 
 export {
     sortVariables,
