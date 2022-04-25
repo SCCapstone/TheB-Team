@@ -12,7 +12,7 @@
     <input type="text" v-model="street2" placeholder="Street">
     <input type="text" v-model="city2" placeholder="City">
     <input type="text" v-model="state2" placeholder="State">
-    <button @click="generateMap(street1, street2, city1, city2, state1, state2); showDiv(); showDirections();">Submit</button>
+    <button :disabled="!(street1 && city1 && state1 && street2 && city2 && state2)" @click="generateMap(street1, street2, city1, city2, state1, state2); showDiv(); showDirections();">Submit</button>
   </div>
   <div id="mapContainer" style="height:600px;width:100%" ref="hereMap"></div>
   <div class="display" id="displayDiv" style="display:none;"> 

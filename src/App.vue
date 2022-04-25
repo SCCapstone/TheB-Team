@@ -53,9 +53,16 @@ button {
   display: inline-block;
   font-size: 14px;
   margin: 2px 2px;
+}
+
+button:enabled {
   cursor: pointer;
   -webkit-transition-duration: 0.1s;
   transition-duration: 0.1s;
+}
+
+button:disabled {
+  background-color: lightgrey;
 }
 
 .button2 {
@@ -74,7 +81,7 @@ button {
   transition-duration: 0.1s;
 }
 
-button:hover {
+button:hover:enabled {
   box-shadow: 0 6px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 </style>
