@@ -23,9 +23,6 @@
     <h3>Directions</h3>
     <div v-for="(maneuver,index) in directions" v-html="maneuver.instruction" :key="index"></div>
   </div>
-  <div id="printButton" style="display:none;">
-    <button @click="printDiv('directionsDiv');">Print Directions</button>
-  </div>
 </template>
 
 <script>
@@ -88,6 +85,7 @@ import { getCoord } from '@/utils.js';
           this.lng2 = response2.data.Response.View[0].Result[0].Location.DisplayPosition.Longitude
           var response3 = await getRoute(this.lat1,this.lng1,this.lat2,this.lng2);
           this.routes = response3.data.response.route[0].summaryByCountry
+          console.log(this.routes[0].country)
           this.directions = response3.data.response.route[0].leg[0].maneuver
           this.routes.forEach((route) => {
               route.text += route.country
@@ -127,15 +125,15 @@ import { getCoord } from '@/utils.js';
         this.$emit('submitRoutes', this.routes)
       },
       //used to print out directions
-      printDiv(divName) {
-        if(document.getElementById(divName) != null) {
-          var printContents = document.getElementById(divName).innerHTML;
-        }
-        this.w=window.open();
-        this.w.document.write(printContents);
-        this.w.print();
-        this.w.close();
-      }
+      // printDiv(divName) {
+      //   if(document.getElementById(divName) != null) {
+      //     var printContents = document.getElementById(divName).innerHTML;
+      //   }
+      //   this.w=window.open();
+      //   this.w.document.write(printContents);
+      //   this.w.print();
+      //   this.w.close();
+      // }
     },
     mounted() {
     }
