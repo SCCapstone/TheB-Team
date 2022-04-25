@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h3>{{ id }}</h3>
         <form @submit.prevent="onSubmit">
             <div class="form-group">
                 <label for="state">State:</label><br>
@@ -61,50 +60,16 @@ import {
     getConditionsByVariable
 } from '@/firebase';
 import { reactive } from 'vue';
-import { states } from '@/utils';
+import { states, conditions, operations } from '@/utils';
 import router from '@/router';
 export default {
     name: 'ConditionView',
     data () {
         return {
             id: '',
-            conditions: [
-                {
-                    key: 'less-than',
-                    text: '<'
-                },
-                {
-                    key: 'less-equal',
-                    text: '<='
-                },
-                {
-                    key: 'greater-than',
-                    text: '>'
-                },
-                {
-                    key: 'greater-equal',
-                    text: '>='
-                },
-                {
-                    key: 'equal-to',
-                    text: '='
-                }
-            ],
-            operations: [
-                {
-                    key: 'addFlat',
-                    text: 'Add Flat'
-                },
-                {
-                    key: 'addPerMile',
-                    text: 'Add Per Mile'
-                },
-                {
-                    key: 'addPer4LaneMile',
-                    text: 'Add Per 4 Lane Mile'
-                }
-            ],
-            states: [],
+            conditions,
+            operations,
+            states,
             form: reactive({
                 state: '',
                 variable: '',
@@ -129,7 +94,6 @@ export default {
             this.form.operand = this.condition.operand;
         }
 
-        this.states = states;
         this.variables = await getVariables();
     },
     methods: {
