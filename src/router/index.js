@@ -9,6 +9,7 @@ import Rulesregulations from '../views/Rulesregulations.vue'
 import Condition from '../views/Condition.vue'
 import Register from '../views/Register.vue'
 import ForgotPassword from '../views/ForgotPassword.vue'
+import User from '../views/User.vue'
 
  const routes = [
   {
@@ -59,6 +60,11 @@ import ForgotPassword from '../views/ForgotPassword.vue'
     name: 'ForgotPassword',
     component: ForgotPassword,
   },
+  {
+    path: '/TheB-Team/user',
+    name: 'User',
+    component: User
+  }
 ]
 
 const router = createRouter({

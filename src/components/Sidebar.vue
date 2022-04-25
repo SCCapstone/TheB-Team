@@ -43,6 +43,7 @@ export default {
     <SidebarLink v-if="isLoggedIn" to="/TheB-Team/gps" icon="fa-solid fa-location-arrow">GPS</SidebarLink>
     <SidebarLink v-if="isLoggedIn" to="/TheB-Team/calculator" icon="fa-solid fa-calculator">Calculator</SidebarLink>
     <SidebarLink v-if="isLoggedIn" to="/TheB-Team/rulesregulations" icon="fa-solid fa-truck">Rules/Regulations</SidebarLink>
+    <SidebarLink v-if="isLoggedIn" to="/TheB-Team/user" icon="fa-solid fa-user">User</SidebarLink>
 
     <span
       class="collapse-icon"

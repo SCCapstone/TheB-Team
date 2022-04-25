@@ -1,7 +1,7 @@
 <template>
   <div class="rulesregulations">
     <hr>
-    <h1>Rules and Regulations:</h1>
+    <h1>Rules and Regulations</h1>
     <h3>These rules are used by the calculator to estimate how much a permit for a given route and vehicle should be</h3>
     <hr>
     <div class="item" v-for="(item, index) of conditionsList" :key="index">
@@ -20,7 +20,7 @@
 <script>
 import { getConditions, deleteCondition, getAdmins } from '@/firebase';
 import router from '@/router';
-import firebase from 'firebase'
+import firebase from 'firebase';
 import { conditions } from '@/utils';
 
 export default {
