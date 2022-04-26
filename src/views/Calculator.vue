@@ -129,6 +129,7 @@ export default {
                     this.errorMessage = 'One or more of these addresses is invalid'
                 }
             } catch (error) {
+                console.log(error);
                 this.errorMessage = 'Cannot find a route between these points';
             } finally {
                 this.isLoading = false;

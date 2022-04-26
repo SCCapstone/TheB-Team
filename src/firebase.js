@@ -105,15 +105,18 @@ export const getConditionsByState = async (state) => {
 }
 
 export const getConditionsByStates = async (list) => {
-    const querySnapshot = await conditionsCollection.where('state', 'in', list).get();
     const conditions = [];
-    querySnapshot.forEach((doc) => {
-        const condition = {
-            id: doc.id,
-            ...doc.data()
-        }
-        conditions.push(condition);
-    });
+    for (let i = 0; i < list.length; i += 10) {
+        const chunk = list.slice(i, i+10);
+        const querySnapshot = await conditionsCollection.where('state', 'in', chunk).get();
+        querySnapshot.forEach((doc) => {
+            const condition = {
+                id: doc.id,
+                ...doc.data()
+            }
+            conditions.push(condition);
+        });
+    }
     return conditions;
 }
 
