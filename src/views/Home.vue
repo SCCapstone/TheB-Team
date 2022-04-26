@@ -14,13 +14,9 @@
         Rules/Regulations List -- see what laws/guidlines are required for each of your trucks<br>
       </p>
       <h4>***** You must log in to see these features *****</h4>
-      <p>
-        <br>PoC Demo video as placeholder<br>
-        <i class="fa-solid fa-angles-down" />
-      </p>
       <section>
         <iframe width="560" height="315" 
-        src="https://www.youtube.com/embed/zR0bBWwRF4I" title="YouTube video player" frameborder="0" 
+        src="https://www.youtube.com/embed/1ORnEuLVHWE" title="YouTube video player" frameborder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen></iframe>
       </section>
